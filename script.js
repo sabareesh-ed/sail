@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
         groupedItems[type].forEach((item, index) => {
             let itemDiv = document.createElement("div");
             itemDiv.className = "navbar_cart-content";
+            itemDiv.setAttribute('data-item-id', item.id);
 
             let itemNameSpan = document.createElement("span");
             itemNameSpan.className = "navbar_cart-quote-title max-width-xxsmall";
@@ -163,7 +164,17 @@ document.addEventListener("DOMContentLoaded", function () {
   function removeItemFromCart(itemId) {
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
     let updatedItems = storedItems.filter(item => item.id !== itemId);
-    localStorage.setItem("quotedItems", JSON.stringify(updatedItems));
-    renderCartItems();
-  }
+
+    let itemElement = document.querySelector(`.navbar_cart-content[data-item-id="${itemId}"]`);
+    if (itemElement) {
+      
+        itemElement.classList.add('removing');
+
+        
+        setTimeout(() => {
+            localStorage.setItem("quotedItems", JSON.stringify(updatedItems));
+            renderCartItems(); 
+        }, 300); 
+    }
+}
 });
