@@ -127,8 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       cartContentWrapper.appendChild(itemDiv);
     });
-
-    toggleCartDisplay()
   }
 
   function removeItemFromCart(index) {
