@@ -67,11 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let itemType = "";
 
     // Determine the type based on button ID
-    if (buttonId === "add-opportunities-quote") {
+    if (buttonId === "add-opportunities-quote" || buttonId === "add-opportunities-quote-text") {
       itemType = "Opportunities";
-    } else if (buttonId === "add-convert-quote") {
+    } else if (buttonId === "add-convert-quote" || buttonId === "add-convert-quote-text") {
       itemType = "Conversion";
-    } else if (buttonId === "add-efficiency-quote") {
+    } else if (buttonId === "add-efficiency-quote" || buttonId === "add-efficiency-quote-text") {
       itemType = "Efficiency";
     }
 
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Attach event listeners to buttons
   let buttons = document.querySelectorAll(
-    "#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote"
+    "#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote, #add-opportunities-quote-text, add-convert-quote-text, add-efficiency-quote-text"
   );
   buttons.forEach((button) => {
     button.addEventListener("click", handleButtonClick);
