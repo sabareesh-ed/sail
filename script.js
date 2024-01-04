@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Attach event listeners to buttons
   let buttons = document.querySelectorAll(
-    "#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote, #add-opportunities-quote-text, add-convert-quote-text, add-efficiency-quote-text"
+    "#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote, #add-opportunities-quote-text, #add-convert-quote-text, #add-efficiency-quote-text"
   );
   buttons.forEach((button) => {
     button.addEventListener("click", handleButtonClick);
