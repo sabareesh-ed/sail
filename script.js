@@ -63,11 +63,21 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to handle button click
   function handleButtonClick(event) {
     console.log("Button clicked");
+    let buttonId = event.target.id;
+    let itemType = "";
+
+    // Determine the type based on button ID
+    if (buttonId === "add-opportunities-quote") {
+      itemType = "Opportunities";
+    } else if (buttonId === "add-convert-quote") {
+      itemType = "Convert";
+    } else if (buttonId === "add-efficiency-quote") {
+      itemType = "Efficiency";
+    }
 
     // Assuming the item name is stored in a data attribute 'data-item-name'
     let itemName = event.target.getAttribute("data-item-name");
     let itemId = event.target.getAttribute("data-item-id");
-    let itemType = event.target.getAttribute("data-item-type")
 
     addItemToLocalStorage(itemName, itemId, itemType);
       toggleCartDisplay()
