@@ -8,41 +8,41 @@ document.addEventListener("DOMContentLoaded", function () {
         $("#solution-card-button-1").click();
       }, 3000);
     });
-
-    // Custom code to toggle get-quote cart
-    var quoteButton = document.getElementById("navbar-quote-button");
-    var cartContainer = document.getElementById("navbar_cart-container");
-    var cartOverlay = document.getElementById("nav_cart-overlay"); // Added line for the overlay
-    var closeButton = document.getElementById("navbar-cart-closebtn");
-
-    // Function to toggle the display of the cart container and overlay
-    function toggleCartDisplay() {
-      var isCartHidden =
-        cartContainer.style.display === "none" ||
-        cartContainer.style.display === "";
-
-      cartContainer.style.display = isCartHidden ? "block" : "none";
-      cartOverlay.style.display = isCartHidden ? "block" : "none"; // Toggle the overlay display
-    }
-
-    // Check if elements exist to avoid errors
-    if (quoteButton && cartOverlay && closeButton) {
-      // Event listener for the quote button
-      quoteButton.addEventListener("click", function () {
-        toggleCartDisplay();
-      });
-
-      // Event listener for the close button
-      closeButton.addEventListener("click", function () {
-        toggleCartDisplay();
-      });
-
-      // Event listener for the cart overlay
-      cartOverlay.addEventListener("click", function () {
-        toggleCartDisplay();
-      });
-    }
   });
+
+  // Custom code to toggle get-quote cart
+  var quoteButton = document.getElementById("navbar-quote-button");
+  var cartContainer = document.getElementById("navbar_cart-container");
+  var cartOverlay = document.getElementById("nav_cart-overlay"); // Added line for the overlay
+  var closeButton = document.getElementById("navbar-cart-closebtn");
+
+  // Function to toggle the display of the cart container and overlay
+  function toggleCartDisplay() {
+    var isCartHidden =
+      cartContainer.style.display === "none" ||
+      cartContainer.style.display === "";
+
+    cartContainer.style.display = isCartHidden ? "block" : "none";
+    cartOverlay.style.display = isCartHidden ? "block" : "none"; // Toggle the overlay display
+  }
+
+  // Check if elements exist to avoid errors
+  if (quoteButton && cartOverlay && closeButton) {
+    // Event listener for the quote button
+    quoteButton.addEventListener("click", function () {
+      toggleCartDisplay();
+    });
+
+    // Event listener for the close button
+    closeButton.addEventListener("click", function () {
+      toggleCartDisplay();
+    });
+
+    // Event listener for the cart overlay
+    cartOverlay.addEventListener("click", function () {
+      toggleCartDisplay();
+    });
+  }
 
   // Function to add item to local storage
   function addItemToLocalStorage(itemName, itemId, itemType) {
