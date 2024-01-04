@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (let type in groupedItems) {
         let typeDiv = document.createElement("div");
-        typeDiv.className = "cart-type";
+        typeDiv.className = "navbar_cart-quote-type";
 
         let typeTitle = document.createElement("h3");
         typeTitle.textContent = type;
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
             itemDiv.className = "navbar_cart-content";
 
             let itemNameSpan = document.createElement("span");
-            itemNameSpan.className = "text-size-small font-dm-sans text-weight-bold";
+            itemNameSpan.className = "navbar_cart-quote-title";
             itemNameSpan.textContent = item.name;
 
             let deleteButton = createDeleteButton(index, item.id);
