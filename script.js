@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let itemId = event.target.getAttribute("data-item-id");
 
     addItemToLocalStorage(itemName, itemId, itemType);
+      toggleCartDisplay()
   }
 
   // Attach event listeners to buttons
