@@ -142,7 +142,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let typeDiv = document.createElement("div");
         typeDiv.className = "navbar_cart-quote-type";
 
-        let typeTitle = document.createElement("h3");
+        let typeTitle = document.createElement("div");
+        typeTitle.className = "text-size-small font-dm-sans text-weight-bold"
         typeTitle.textContent = type;
         typeDiv.appendChild(typeTitle);
 
