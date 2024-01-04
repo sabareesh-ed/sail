@@ -101,9 +101,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     storedItems.forEach((item, index) => {
       let itemDiv = document.createElement("div");
-      itemDiv.className = "cart-item";
+      itemDiv.className = "quote-item";
 
       let itemNameSpan = document.createElement("span");
+      itemNameSpan.className = "quote-title"
       itemNameSpan.textContent = item.name;
 
       let deleteButton = document.createElement("button");
