@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (buttonId === "add-opportunities-quote") {
       itemType = "Opportunities";
     } else if (buttonId === "add-convert-quote") {
-      itemType = "Convert";
+      itemType = "Conversion";
     } else if (buttonId === "add-efficiency-quote") {
       itemType = "Efficiency";
     }
