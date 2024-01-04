@@ -62,35 +62,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to handle button click
   function handleButtonClick(event) {
-    // Use closest to get the button element even if the click is on a child element
-    let button = event.target.closest('button');
-    if (!button) return; // Exit if no button found
-
     console.log("Button clicked");
-
-    let buttonId = button.id;
+    let buttonId = event.target.id;
     let itemType = "";
 
     // Determine the type based on button ID
     if (buttonId === "add-opportunities-quote") {
-        itemType = "Opportunities";
+      itemType = "Opportunities";
     } else if (buttonId === "add-convert-quote") {
-        itemType = "Convert";
+      itemType = "Convert";
     } else if (buttonId === "add-efficiency-quote") {
-        itemType = "Efficiency";
+      itemType = "Efficiency";
     }
 
-    // Assuming the item name and id are stored in data attributes on the button
-    let itemName = button.getAttribute("data-item-name");
-    let itemId = button.getAttribute("data-item-id");
+    // Assuming the item name is stored in a data attribute 'data-item-name'
+    let itemName = event.target.getAttribute("data-item-name");
+    let itemId = event.target.getAttribute("data-item-id");
 
-    // Check for null or undefined values
-    if (itemName && itemId) {
-        addItemToLocalStorage(itemName, itemId, itemType);
-        toggleCartDisplay();
-    }
-}
-
+    addItemToLocalStorage(itemName, itemId, itemType);
+      toggleCartDisplay()
+  }
 
   // Attach event listeners to buttons
   let buttons = document.querySelectorAll(
