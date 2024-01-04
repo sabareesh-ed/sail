@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       cartContainer.style.display === "none" ||
       cartContainer.style.display === "";
 
-    cartContainer.style.display = isCartHidden ? "block" : "none";
+    cartContainer.style.display = isCartHidden ? "flex" : "none";
     cartOverlay.style.display = isCartHidden ? "block" : "none"; // Toggle the overlay display
   }
 
