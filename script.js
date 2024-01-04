@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let itemId = event.target.getAttribute("data-item-id");
 
     addItemToLocalStorage(itemName, itemId, itemType);
-      toggleCartDisplay()
+    toggleCartDisplay()
   }
 
   // Attach event listeners to buttons
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
             itemDiv.className = "navbar_cart-content";
 
             let itemNameSpan = document.createElement("span");
-            itemNameSpan.className = "navbar_cart-quote-title";
+            itemNameSpan.className = "navbar_cart-quote-title max-width-xxsmall";
             itemNameSpan.textContent = item.name;
 
             let deleteButton = createDeleteButton(index, item.id);
