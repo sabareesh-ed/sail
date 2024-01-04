@@ -18,12 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to toggle the display of the cart container and overlay
   function toggleCartDisplay() {
-    var isCartHidden =
-      cartContainer.style.display === "none" ||
-      cartContainer.style.display === "";
-
-    cartContainer.style.display = isCartHidden ? "flex" : "none";
-    cartOverlay.style.display = isCartHidden ? "block" : "none"; // Toggle the overlay display
+    // Toggle the 'visible' class on the cart container and overlay
+    cartContainer.classList.toggle('visible');
+    cartOverlay.classList.toggle('visible');
   }
 
   // Check if elements exist to avoid errors
