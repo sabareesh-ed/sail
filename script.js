@@ -124,6 +124,16 @@ document.addEventListener("DOMContentLoaded", function () {
         cartContentWrapper.appendChild(typeDiv);
     }
     updateFormInput(cartDataForForm);
+    updateQuoteButtonCount(cartDataForForm);
+  }
+
+  function updateQuoteButtonCount(cartData) {
+    let quoteCountSpan = document.getElementById("quote-count");
+    if (quoteCountSpan) {
+        // Calculate the count as the length of cartData plus 1
+        let count = cartData.length + 1;
+        quoteCountSpan.textContent = `(${count})`;
+    }
   }
 
   function updateFormInput(cartData) {
