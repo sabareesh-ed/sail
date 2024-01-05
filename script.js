@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateQuoteButtonCount(cartDataForForm);
   }
 
-function updateButtonInnerText(itemId) {
+  function updateButtonInnerText(itemId) {
     let button = document.querySelector(`div[role="button"][data-item-id="${itemId}"]`);
     if (!button) return;
 
@@ -137,9 +137,16 @@ function updateButtonInnerText(itemId) {
 
     let buttonTextElement = button.querySelector('.text-size-small'); 
     if (buttonTextElement) {
-        buttonTextElement.textContent = isItemInCart ? 'Added to quote' : 'Add to quote';
+        // Define the HTML content with class names and other attributes
+        let htmlContent = isItemInCart 
+            ? '<span class="your-class-name">Added to quote</span>'
+            : '<span class="another-class-name">Add to quote</span>';
+
+        // Set the HTML content
+        buttonTextElement.innerHTML = htmlContent;
     }
 }
+
 
 
 
