@@ -62,6 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let button = event.target.closest('button');
     if (!button) return; // Exit if no button found
 
+    console.log("button", button)
+
     console.log("Button clicked");
 
     // Assuming the item type, name, and id are stored in data attributes on the button
