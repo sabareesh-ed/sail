@@ -163,11 +163,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateQuoteButtonCount(cartData) {
     let quoteCount = document.getElementById("quote-count");
     if (quoteCount) {
-        // Calculate the count as the length of cartData plus 1
+        // The count should be the length of cartData
         let count = cartData.length;
-        quoteCount.textContent = `${count}`;
+        quoteCount.textContent = count.toString();
     }
   }
+
 
   function updateFormInput(cartData) {
     let formInput = document.getElementById("cart-data-input");
