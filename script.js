@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  function createDeleteButton(index, itemId) {
+  function createDeleteButton(index, itemId, buttonId) {
       let deleteButton = document.createElement("button");
       deleteButton.className = "navbar-cart-deletebtn";
       
@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
         deleteButton.appendChild(svg);
 
       deleteButton.addEventListener("click", function() {
-          removeItemFromCart(itemId);
+          removeItemFromCart(itemId, buttonId);
       });
 
       return deleteButton;
@@ -220,20 +220,24 @@ document.addEventListener("DOMContentLoaded", function () {
     return groupedItems;
   }
 
-  function removeItemFromCart(itemId) {
+  function removeItemFromCart(itemId, buttonId) {
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
     let updatedItems = storedItems.filter(item => item.id !== itemId);
 
     let itemElement = document.querySelector(`.navbar_cart-content[data-item-id="${itemId}"]`);
     if (itemElement) {
-      
         itemElement.classList.add('removing');
-
         
         setTimeout(() => {
             localStorage.setItem("quotedItems", JSON.stringify(updatedItems));
             renderCartItems(); 
+
+            if (buttonId) {
+                saveButtonStateToLocalStorage(buttonId, false);
+                updateButtonStyle(buttonId, false);
+            }
         }, 300); 
     }
 }
+
 });
