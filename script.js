@@ -57,32 +57,27 @@ document.addEventListener("DOMContentLoaded", function () {
     renderCartItems();
   }
 
-  // Function to handle button click
   function handleButtonClick(event) {
+    // Find the closest ancestor button element
+    let button = event.target.closest('button');
+    if (!button) return; // Exit if no button found
+
     console.log("Button clicked");
-    let buttonId = event.target.id;
-    let itemType = "";
 
-    // Determine the type based on button ID
-    if (buttonId === "add-opportunities-quote" || buttonId === "add-opportunities-quote-text") {
-      itemType = "Opportunities";
-    } else if (buttonId === "add-convert-quote" || buttonId === "add-convert-quote-text") {
-      itemType = "Conversion";
-    } else if (buttonId === "add-efficiency-quote" || buttonId === "add-efficiency-quote-text") {
-      itemType = "Efficiency";
+    // Assuming the item type, name, and id are stored in data attributes on the button
+    let itemType = button.getAttribute("data-item-type");
+    let itemName = button.getAttribute("data-item-name");
+    let itemId = button.getAttribute("data-item-id");
+
+    if (itemName && itemId) {
+        addItemToLocalStorage(itemName, itemId, itemType);
+        toggleCartDisplay();
     }
-
-    // Assuming the item name is stored in a data attribute 'data-item-name'
-    let itemName = event.target.getAttribute("data-item-name");
-    let itemId = event.target.getAttribute("data-item-id");
-
-    addItemToLocalStorage(itemName, itemId, itemType);
-    toggleCartDisplay()
-  }
+}
 
   // Attach event listeners to buttons
   let buttons = document.querySelectorAll(
-    "#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote, #add-opportunities-quote-text, #add-convert-quote-text, #add-efficiency-quote-text"
+    "#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote"
   );
   buttons.forEach((button) => {
     button.addEventListener("click", handleButtonClick);
