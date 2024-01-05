@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let quoteCountSpan = document.getElementById("quote-count");
     if (quoteCountSpan) {
         // Calculate the count as the length of cartData plus 1
-        let count = cartData.length + 1;
+        let count = cartData.length;
         quoteCountSpan.textContent = `(${count})`;
     }
   }
