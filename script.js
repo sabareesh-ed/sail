@@ -58,29 +58,28 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleButtonClick(event) {
-    // Find the closest ancestor button element
-    let button = event.target.closest('button');
-    if (!button) return; // Exit if no button found
+    // Find the closest ancestor div with role="button"
+    let buttonDiv = event.target.closest('div[role="button"]');
+    if (!buttonDiv) return; 
 
-    console.log("button", button)
+    console.log("Button clicked", buttonDiv);
 
-    console.log("Button clicked");
-
-    // Assuming the item type, name, and id are stored in data attributes on the button
-    let itemType = button.getAttribute("data-item-type");
-    let itemName = button.getAttribute("data-item-name");
-    let itemId = button.getAttribute("data-item-id");
+    // Assuming the item type, name, and id are stored in data attributes on the button div
+    let itemType = buttonDiv.getAttribute("data-item-type");
+    let itemName = buttonDiv.getAttribute("data-item-name");
+    let itemId = buttonDiv.getAttribute("data-item-id");
 
     if (itemName && itemId) {
         addItemToLocalStorage(itemName, itemId, itemType);
         toggleCartDisplay();
     }
-  }
+}
 
   document.querySelectorAll("#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote")
-  .forEach(button => {
-      button.addEventListener("click", handleButtonClick);
+  .forEach(buttonDiv => {
+      buttonDiv.addEventListener("click", handleButtonClick);
   });
+
 
   function renderCartItems() {
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
