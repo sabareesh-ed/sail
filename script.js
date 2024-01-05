@@ -129,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateButtonInnerText(itemId) {
+    console.log("function called")
     let button = document.querySelector(`div[role="button"][data-item-id="${itemId}"]`);
     console.log("updatebutton", button)
     if (!button) return;
