@@ -73,14 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
         addItemToLocalStorage(itemName, itemId, itemType);
         toggleCartDisplay();
     }
-}
+  }
 
-  // Attach event listeners to buttons
-  let buttons = document.querySelectorAll(
-    "#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote"
-  );
-  buttons.forEach((button) => {
-    button.addEventListener("click", handleButtonClick);
+  document.querySelectorAll("#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote")
+  .forEach(button => {
+      button.addEventListener("click", handleButtonClick);
   });
 
   function renderCartItems() {
