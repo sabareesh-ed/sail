@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cartContentWrapper.innerHTML = '';
 
     let groupedItems = groupItemsByType(storedItems);
+    let cartDataForForm = [];
 
     for (let type in groupedItems) {
         let typeDiv = document.createElement("div");
@@ -112,11 +113,30 @@ document.addEventListener("DOMContentLoaded", function () {
             itemDiv.appendChild(deleteButton);
 
             typeDiv.appendChild(itemDiv);
+
+            cartDataForForm.push({
+              name: item.name,
+              id: item.id,
+              type: item.type
+          });
         });
 
         cartContentWrapper.appendChild(typeDiv);
     }
+    updateFormInput(cartDataForForm);
   }
+
+  function updateFormInput(cartData) {
+    let formInput = document.getElementById("cart-data-input");
+    if (!formInput) {
+        console.error("Cart data input field not found!");
+        return;
+    }
+
+    // Convert the cart data array to a string format
+    formInput.value = JSON.stringify(cartData);
+  }
+
 
   function createDeleteButton(index, itemId) {
       let deleteButton = document.createElement("button");
