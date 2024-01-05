@@ -128,11 +128,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateQuoteButtonCount(cartData) {
-    let quoteCountSpan = document.getElementById("quote-count");
-    if (quoteCountSpan) {
+    let quoteCount = document.getElementById("quote-count");
+    if (quoteCount) {
         // Calculate the count as the length of cartData plus 1
         let count = cartData.length;
-        quoteCountSpan.textContent = `(${count})`;
+        quoteCount.textContent = `${count}`;
     }
   }
 
