@@ -133,6 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    console.log("cart-data", cartData)
+
     // Convert the cart data array to a string format
     formInput.value = JSON.stringify(cartData);
   }
