@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("script working");
-  restoreButtonStates();
+  console.log("testing");
   renderCartItems();
   $(document).ready(function () {
     $(".product-card").on("click", function () {
@@ -65,9 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Button clicked", buttonDiv);
 
-    updateButtonStyle(buttonDiv.id, true);
-    saveButtonStateToLocalStorage(buttonDiv.id, true);
-
     // Assuming the item type, name, and id are stored in data attributes on the button div
     let itemType = buttonDiv.getAttribute("data-item-type");
     let itemName = buttonDiv.getAttribute("data-item-name");
@@ -77,38 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         addItemToLocalStorage(itemName, itemId, itemType);
         toggleCartDisplay();
     }
-  }
-
-  function updateButtonStyle(buttonId, added) {
-    let button = document.getElementById(buttonId);
-    if (button) {
-        let contentDiv = button.querySelector('.solutions-bottom-card-button-content');
-        let addedContentDiv = button.querySelector('.solutions-bottom-card-button-content-added');
-        if (added) {
-            // Change the style and content to 'added' state
-            contentDiv.style.display = 'none';
-            addedContentDiv.style.display = 'block';
-        } else {
-            // Reset to original style and content
-            contentDiv.style.display = 'block';
-            addedContentDiv.style.display = 'none';
-        }
-    }
-  }
-
-  function saveButtonStateToLocalStorage(buttonId, added) {
-    let buttonStates = JSON.parse(localStorage.getItem("buttonStates")) || {};
-    buttonStates[buttonId] = added;
-    localStorage.setItem("buttonStates", JSON.stringify(buttonStates));
-  }
-
-  function restoreButtonStates() {
-    let buttonStates = JSON.parse(localStorage.getItem("buttonStates")) || {};
-    for (let buttonId in buttonStates) {
-        updateButtonStyle(buttonId, buttonStates[buttonId]);
-    }
-  }
-
+}
 
   document.querySelectorAll("#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote")
   .forEach(buttonDiv => {
