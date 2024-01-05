@@ -128,22 +128,19 @@ document.addEventListener("DOMContentLoaded", function () {
     updateQuoteButtonCount(cartDataForForm);
   }
 
-  function updateButtonInnerText(itemId) {
-    console.log("function called")
+function updateButtonInnerText(itemId) {
     let button = document.querySelector(`div[role="button"][data-item-id="${itemId}"]`);
-    console.log("updatebutton", button)
     if (!button) return;
 
-    // Check if the item is in the cart
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
     let isItemInCart = storedItems.some(item => item.id === itemId);
 
-    // Update button text based on whether the item is in the cart
-    let buttonTextElement = button.querySelector('.text-size-small'); // Adjust the selector as needed
+    let buttonTextElement = button.querySelector('.text-size-small'); 
     if (buttonTextElement) {
-        buttonTextElement.textContent = isItemInCart ? 'Added to Cart' : 'Add to Cart';
+        buttonTextElement.textContent = isItemInCart ? 'Added to Cart' : '+Add to Cart';
     }
 }
+
 
 
   function updateQuoteButtonCount(cartData) {
@@ -216,7 +213,8 @@ document.addEventListener("DOMContentLoaded", function () {
         
         setTimeout(() => {
             localStorage.setItem("quotedItems", JSON.stringify(updatedItems));
-            renderCartItems(); 
+            renderCartItems();
+            updateButtonInnerText(itemId);
         }, 300); 
     }
 }
