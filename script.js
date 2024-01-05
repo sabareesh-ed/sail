@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateFormInput(cartDataForForm);
         updateQuoteButtonCount(cartDataForForm);
     }
-}
+  }
 
 
   function updateButtonInnerText(itemId) {
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Set the HTML content
         buttonTextElement.innerHTML = htmlContent;
     }
-}
+  }
 
 
 
