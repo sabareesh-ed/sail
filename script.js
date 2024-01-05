@@ -139,8 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (buttonTextElement) {
         // Define the HTML content with class names and other attributes
         let htmlContent = isItemInCart 
-            ? '<span class="your-class-name">Added to quote</span>'
-            : '<span class="another-class-name">Add to quote</span>';
+            ? '<span class="text-size-small">Added to quote</span>'
+            : '<span class="text-size-small"><span class="text-size-medium">+</span>Add to quote</span>';
 
         // Set the HTML content
         buttonTextElement.innerHTML = htmlContent;
