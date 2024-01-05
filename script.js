@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("testing");
+  restoreButtonStates();
   renderCartItems();
   $(document).ready(function () {
     $(".product-card").on("click", function () {
@@ -80,6 +81,38 @@ document.addEventListener("DOMContentLoaded", function () {
       buttonDiv.addEventListener("click", handleButtonClick);
   });
 
+  // Function to update button text and store state in localStorage
+  function updateButtonWithAddedState(itemId) {
+    let buttons = document.querySelectorAll(`div[role="button"][data-item-id="${itemId}"]`);
+
+    buttons.forEach(button => {
+        let buttonTextElement = button.querySelector('.text-size-small'); 
+        if (buttonTextElement) {
+            buttonTextElement.textContent = 'Added to Cart';
+
+            // Store the state in localStorage
+            let buttonStates = JSON.parse(localStorage.getItem("buttonStates")) || {};
+            buttonStates[itemId] = true;
+            localStorage.setItem("buttonStates", JSON.stringify(buttonStates));
+        }
+    });
+  }
+
+  // Function to restore button states on page load
+  function restoreButtonStates() {
+    let buttonStates = JSON.parse(localStorage.getItem("buttonStates")) || {};
+    Object.keys(buttonStates).forEach(itemId => {
+        if (buttonStates[itemId] === true) {
+            let buttons = document.querySelectorAll(`div[role="button"][data-item-id="${itemId}"]`);
+            buttons.forEach(button => {
+                let buttonTextElement = button.querySelector('.button-text');
+                if (buttonTextElement) {
+                    buttonTextElement.textContent = 'Added to Cart';
+                }
+            });
+        }
+    });
+  }
 
   function renderCartItems() {
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
