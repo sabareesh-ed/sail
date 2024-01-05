@@ -137,7 +137,7 @@ function updateButtonInnerText(itemId) {
 
     let buttonTextElement = button.querySelector('.text-size-small'); 
     if (buttonTextElement) {
-        buttonTextElement.textContent = isItemInCart ? 'Added to Cart' : '+Add to Cart';
+        buttonTextElement.textContent = isItemInCart ? 'Added to quote' : 'Add to quote';
     }
 }
 
