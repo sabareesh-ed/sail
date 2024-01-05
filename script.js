@@ -133,11 +133,10 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    console.log("cart-data", cartData)
-
-    // Convert the cart data array to a string format
-    formInput.value = JSON.stringify(cartData);
+    let itemNames = cartData.map(item => item.name).join(", ");
+    formInput.value = itemNames;
   }
+
 
 
   function createDeleteButton(index, itemId) {
