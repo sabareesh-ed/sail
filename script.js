@@ -86,8 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let cartContentWrapper = document.getElementById("navbar_cart-content-wrapper");
     cartContentWrapper.innerHTML = '';
 
-    let groupedItems = groupItemsByType(storedItems);
-    let cartDataForForm = [];
+    if (storedItems.length === 0) {
+      // Display a message when the cart is empty
+      let emptyCartMessage = document.createElement('div');
+      emptyCartMessage.textContent = 'No items in the cart';
+      emptyCartMessage.className = 'empty-cart-message'; // Optional: for styling purposes
+      cartContentWrapper.appendChild(emptyCartMessage);
 
     for (let type in groupedItems) {
         let typeDiv = document.createElement("div");
