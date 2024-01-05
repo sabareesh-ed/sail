@@ -84,49 +84,59 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderCartItems() {
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
     let cartContentWrapper = document.getElementById("navbar_cart-content-wrapper");
-    cartContentWrapper.innerHTML = '';
+    cartContentWrapper.innerHTML = ''; // Clear existing content
 
-    let groupedItems = groupItemsByType(storedItems);
-    let cartDataForForm = [];
+    if (storedItems.length === 0) {
+        // If the cart is empty, display a message
+        let emptyCartDiv = document.createElement('div');
+        emptyCartDiv.textContent = 'Cart empty';
+        emptyCartDiv.className = 'empty-cart-message'; // Optional: for styling
+        cartContentWrapper.appendChild(emptyCartDiv);
+    } else {
+        // If there are items in the cart, render them as usual
+        let groupedItems = groupItemsByType(storedItems);
+        let cartDataForForm = [];
 
-    for (let type in groupedItems) {
-        let typeDiv = document.createElement("div");
-        typeDiv.className = "navbar_cart-quote-type";
+        for (let type in groupedItems) {
+            let typeDiv = document.createElement("div");
+            typeDiv.className = "navbar_cart-quote-type";
 
-        let typeTitle = document.createElement("div");
-        typeTitle.className = "text-size-small font-dm-sans text-weight-bold"
-        typeTitle.textContent = type;
-        typeDiv.appendChild(typeTitle);
+            let typeTitle = document.createElement("div");
+            typeTitle.className = "text-size-small font-dm-sans text-weight-bold";
+            typeTitle.textContent = type;
+            typeDiv.appendChild(typeTitle);
 
-        groupedItems[type].forEach((item, index) => {
-            updateButtonInnerText(item.id);
-            let itemDiv = document.createElement("div");
-            itemDiv.className = "navbar_cart-content";
-            itemDiv.setAttribute('data-item-id', item.id);
+            groupedItems[type].forEach((item, index) => {
+                updateButtonInnerText(item.id);
+                let itemDiv = document.createElement("div");
+                itemDiv.className = "navbar_cart-content";
+                itemDiv.setAttribute('data-item-id', item.id);
 
-            let itemNameSpan = document.createElement("span");
-            itemNameSpan.className = "navbar_cart-quote-title max-width-xxsmall";
-            itemNameSpan.textContent = item.name;
+                let itemNameSpan = document.createElement("span");
+                itemNameSpan.className = "navbar_cart-quote-title max-width-xxsmall";
+                itemNameSpan.textContent = item.name;
 
-            let deleteButton = createDeleteButton(index, item.id);
+                let deleteButton = createDeleteButton(index, item.id);
 
-            itemDiv.appendChild(itemNameSpan);
-            itemDiv.appendChild(deleteButton);
+                itemDiv.appendChild(itemNameSpan);
+                itemDiv.appendChild(deleteButton);
 
-            typeDiv.appendChild(itemDiv);
+                typeDiv.appendChild(itemDiv);
 
-            cartDataForForm.push({
-              name: item.name,
-              id: item.id,
-              type: item.type
-          });
-        });
+                cartDataForForm.push({
+                  name: item.name,
+                  id: item.id,
+                  type: item.type
+                });
+            });
 
-        cartContentWrapper.appendChild(typeDiv);
+            cartContentWrapper.appendChild(typeDiv);
+        }
+        updateFormInput(cartDataForForm);
+        updateQuoteButtonCount(cartDataForForm);
     }
-    updateFormInput(cartDataForForm);
-    updateQuoteButtonCount(cartDataForForm);
-  }
+}
+
 
   function updateButtonInnerText(itemId) {
     let button = document.querySelector(`div[role="button"][data-item-id="${itemId}"]`);
