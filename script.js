@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderCartItems() {
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
     let cartContentWrapper = document.getElementById("navbar_cart-content-wrapper");
-    cartContentWrapper.innerHTML = ''; // Clear existing content
+    cartContentWrapper.innerHTML = ''; 
 
     let quoteCount = document.getElementById("quote-count");
 
@@ -101,6 +101,13 @@ document.addEventListener("DOMContentLoaded", function () {
           quoteCount.style.display = 'flex';
           quoteCount.textContent = storedItems.length.toString();
         }
+
+        let clearButton = document.createElement('button');
+        clearButton.textContent = 'Clear Cart';
+        clearButton.className = 'clear-cart-button'; // class for styling
+        clearButton.addEventListener('click', clearCart);
+        cartContentWrapper.appendChild(clearButton);
+
         let groupedItems = groupItemsByType(storedItems);
         let cartDataForForm = [];
 
@@ -144,6 +151,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function clearCart() {
+    localStorage.setItem("quotedItems", JSON.stringify([]));
+    renderCartItems();
+    resetAllButtonStates();
+  }
+
+  function resetAllButtonStates() {
+    document.querySelectorAll("#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote")
+    .forEach(buttonDiv => {
+        updateButtonInnerText(buttonDiv.getAttribute("data-item-id"));
+    });
+}
 
   function updateButtonInnerText(itemId) {
     let button = document.querySelector(`div[role="button"][data-item-id="${itemId}"]`);
