@@ -86,14 +86,21 @@ document.addEventListener("DOMContentLoaded", function () {
     let cartContentWrapper = document.getElementById("navbar_cart-content-wrapper");
     cartContentWrapper.innerHTML = ''; // Clear existing content
 
+    let quoteCount = document.getElementById("quote-count");
+
     if (storedItems.length === 0) {
-        // If the cart is empty, display a message
+        if (quoteCount) {
+          quoteCount.style.display = 'none';
+        }
         let emptyCartDiv = document.createElement('div');
         emptyCartDiv.textContent = 'Cart empty';
-        emptyCartDiv.className = 'empty-cart-message'; // Optional: for styling
+        emptyCartDiv.className = 'empty-cart-message'; // for styling
         cartContentWrapper.appendChild(emptyCartDiv);
     } else {
-        // If there are items in the cart, render them as usual
+        if (quoteCount) {
+          quoteCount.style.display = 'block';
+          quoteCount.textContent = storedItems.length.toString();
+        }
         let groupedItems = groupItemsByType(storedItems);
         let cartDataForForm = [];
 
