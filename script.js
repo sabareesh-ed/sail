@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let buttonDiv = event.target.closest('div[role="button"]');
     if (!buttonDiv) return; 
 
-    console.log("Button clicked", buttonDiv);
+    // console.log("Button clicked", buttonDiv);
 
     // Assuming the item type, name, and id are stored in data attributes on the button div
     let itemType = buttonDiv.getAttribute("data-item-type");
@@ -144,6 +144,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
     let isItemInCart = storedItems.some(item => item.id === itemId);
+
+    console.log("button", button)
 
     let buttonTextElement = button.querySelector('.text-size-small'); 
     if (buttonTextElement) {
