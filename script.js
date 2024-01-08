@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
         cartContentWrapper.appendChild(emptyCartDiv);
     } else {
         if (quoteCount) {
-          quoteCount.style.display = 'block';
+          quoteCount.style.display = 'flex';
           quoteCount.textContent = storedItems.length.toString();
         }
         let groupedItems = groupItemsByType(storedItems);
