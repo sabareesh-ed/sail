@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         let clearButton = document.createElement('button');
-        clearButton.textContent = 'Clear Cart';
-        clearButton.className = 'button'; // class for styling
+        clearButton.textContent = 'Clear';
+        clearButton.className = 'text-style-italic is-link'; // class for styling
         clearButton.addEventListener('click', clearCart);
         cartContentWrapper.appendChild(clearButton);
 
