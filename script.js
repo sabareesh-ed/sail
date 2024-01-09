@@ -158,26 +158,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 }
 
-  function updateButtonInnerText(itemId) {
-    let button = document.querySelector(`div[role="button"][data-item-id="${itemId}"]`);
-    if (!button) return;
+function updateButtonInnerText(itemId) {
+  let button = document.querySelector(`div[role="button"][data-item-id="${itemId}"]`);
+  if (!button) return;
 
-    let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
-    let isItemInCart = storedItems.some(item => item.id === itemId);
+  let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
+  let isItemInCart = storedItems.some(item => item.id === itemId);
 
-    console.log("button", button)
+  let buttonTextElement = button.querySelector('.text-size-small'); 
+  if (buttonTextElement) {
+    let htmlContent = isItemInCart 
+        ? '<span class="text-size-small" style="gap: 4px ; display: inline-flex; justify-content = center; align-items : center;">Added<svg style="stroke-width: 1.5px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="check-icon"><path fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg></span>'
+        : '<span class="text-size-small"><span class="text-size-medium">+</span>Add to quote</span>';
 
-    let buttonTextElement = button.querySelector('.text-size-small'); 
-    if (buttonTextElement) {
-        // Define the HTML content with class names and other attributes
-        let htmlContent = isItemInCart 
-            ? '<span class="text-size-small" style="gap: 4px ; display: inline-flex; justify-content = center; align-items : center;">Added<svg style="stroke-width: 1.5px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="check-icon"><path fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg></span>'
-            : '<span class="text-size-small"><span class="text-size-medium">+</span>Add to quote</span>';
+    buttonTextElement.innerHTML = htmlContent;
 
-        // Set the HTML content
-        buttonTextElement.innerHTML = htmlContent;
+    // Toggle the added-to-cart class based on whether the item is in the cart
+    if (isItemInCart) {
+      button.classList.remove('background-color-purple-1');
+      button.classList.add('background-color-orange');
+    } else {
+      button.classList.remove('background-color-orange');
+      button.classList.add('background-color-purple-1');
     }
   }
+}
+
 
 
 
