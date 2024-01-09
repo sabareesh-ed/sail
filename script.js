@@ -13,29 +13,25 @@ document.addEventListener("DOMContentLoaded", function () {
   // Custom code to toggle get-quote cart
   var quoteButton = document.getElementById("navbar-quote-button");
   var cartContainer = document.getElementById("navbar_cart-container");
-  var cartOverlay = document.getElementById("nav_cart-overlay"); // Added line for the overlay
+  var cartOverlay = document.getElementById("nav_cart-overlay");
   var closeButton = document.getElementById("navbar-cart-closebtn");
 
   // Function to toggle the display of the cart container and overlay
   function toggleCartDisplay() {
-    // Toggle the 'visible' class on the cart container and overlay
     cartContainer.classList.toggle('visible');
     cartOverlay.classList.toggle('visible');
   }
 
   // Check if elements exist to avoid errors
   if (quoteButton && cartOverlay && closeButton) {
-    // Event listener for the quote button
     quoteButton.addEventListener("click", function () {
       toggleCartDisplay();
     });
 
-    // Event listener for the close button
     closeButton.addEventListener("click", function () {
       toggleCartDisplay();
     });
 
-    // Event listener for the cart overlay
     cartOverlay.addEventListener("click", function () {
       toggleCartDisplay();
     });
@@ -62,9 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let buttonDiv = event.target.closest('div[role="button"]');
     if (!buttonDiv) return; 
 
-    // console.log("Button clicked", buttonDiv);
 
-    // Assuming the item type, name, and id are stored in data attributes on the button div
     let itemType = buttonDiv.getAttribute("data-item-type");
     let itemName = buttonDiv.getAttribute("data-item-name");
     let itemId = buttonDiv.getAttribute("data-item-id");
@@ -104,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let clearButton = document.createElement('button');
         clearButton.textContent = 'Clear Cart';
-        clearButton.className = 'clear-cart-button'; // class for styling
+        clearButton.className = 'button'; // class for styling
         clearButton.addEventListener('click', clearCart);
         cartContentWrapper.appendChild(clearButton);
 
