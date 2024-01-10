@@ -87,9 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
           quoteCount.style.display = 'none';
         }
         let emptyCartDiv = document.createElement('div');
-        emptyCartDiv.textContent = 'Your quote cart is currently empty.';
-        emptyCartDiv.className = 'empty-cart-message'; // for styling
-        cartContentWrapper.appendChild(emptyCartDiv);
+        emptyCartDiv.textConte
     } else {
         if (quoteCount) {
           quoteCount.style.display = 'flex';
@@ -169,7 +167,7 @@ function updateButtonInnerText(itemId) {
   if (buttonTextElement) {
     let htmlContent = isItemInCart 
         ? '<span class="text-size-small" style="gap: 6px ; display: inline-flex; justify-content : center; align-items : center;">Added<svg style="stroke-width: 1.5px; margin-bottom: 0.5px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="check-icon"><path fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg></span>'
-        : '<span class="text-size-small" <span class="text-size-medium" style="display: flex; justify-content: center; align-items: center; margin-right: 4px;">+</span>Add to quote</span>';
+        : '<span class="text-size-small" <span class="text-size-medium" style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-right: 4px;">+</span>Add to quote</span>';
 
     buttonTextElement.innerHTML = htmlContent;
 
