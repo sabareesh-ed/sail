@@ -87,7 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
           quoteCount.style.display = 'none';
         }
         let emptyCartDiv = document.createElement('div');
-        emptyCartDiv.textConte
+        emptyCartDiv.textContent = 'Your quote cart is currently empty.';
+        emptyCartDiv.className = 'empty-cart-message'; // for styling
+        cartContentWrapper.appendChild(emptyCartDiv);
     } else {
         if (quoteCount) {
           quoteCount.style.display = 'flex';
