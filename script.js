@@ -174,13 +174,13 @@ function updateButtonInnerText(itemId) {
     buttonTextElement.innerHTML = htmlContent;
 
     // Toggle the added-to-cart class based on whether the item is in the cart
-    // if (isItemInCart) {
-    //   button.classList.remove('background-color-purple-1');
-    //   button.classList.add('background-color-orange');
-    // } else {
-    //   button.classList.remove('background-color-orange');
-    //   button.classList.add('background-color-purple-1');
-    // }
+    if (isItemInCart) {
+      button.classList.remove('background-color-purple-1');
+      button.classList.add('is-quote-added-button');
+    } else {
+      button.classList.remove('is-quote-added-button');
+      button.classList.add('background-color-purple-1');
+    }
     }
   }
 
