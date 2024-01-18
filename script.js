@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     storedItems.forEach(item => {
       updateButtonStyles(item.id);
+      console.log("item.id",item.id)
     });
 
     if (storedItems.length === 0) {
