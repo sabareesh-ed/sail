@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (itemName && itemId) {
         addItemToLocalStorage(itemName, itemId, itemType);
         // toggleCartDisplay();
-        animateButtonToCart(button);
+        animateButtonToCart(buttonDiv);
     }
 }
 
