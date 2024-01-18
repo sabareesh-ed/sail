@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // toggleCartDisplay();
         animateButtonToCart(buttonDiv);
     }
-}
+  }
 
   document.querySelectorAll("#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote")
   .forEach(buttonDiv => {
@@ -81,6 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
     buttonClone.style.zIndex = 1000;
     document.body.appendChild(buttonClone);
 
+    console.log("buttonClone",buttonClone)
+
     // Position the clone on top of the original button
     const buttonRect = button.getBoundingClientRect();
     buttonClone.style.left = `${buttonRect.left}px`;
@@ -89,6 +91,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Get the position of the cart
     const cart = document.getElementById('navbar-quote-button');
     const cartRect = cart.getBoundingClientRect();
+    console.log("cart",cart)
+    console.log("cartRect",cartRect)
+    console.log("buttonRect",buttonRect)
+
 
     // Calculate the translation required
     const translateX = cartRect.left - buttonRect.left;
