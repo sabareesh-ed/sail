@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (itemName && itemId) {
         addItemToLocalStorage(itemName, itemId, itemType);
         // toggleCartDisplay();
+        animateButtonToCart(button);
     }
 }
 
@@ -74,6 +75,39 @@ document.addEventListener("DOMContentLoaded", function () {
       buttonDiv.addEventListener("click", handleButtonClick);
   });
 
+  function animateButtonToCart(button) {
+    const buttonClone = button.cloneNode(true);
+    buttonClone.style.position = 'absolute';
+    buttonClone.style.zIndex = 1000;
+    document.body.appendChild(buttonClone);
+
+    // Position the clone on top of the original button
+    const buttonRect = button.getBoundingClientRect();
+    buttonClone.style.left = `${buttonRect.left}px`;
+    buttonClone.style.top = `${buttonRect.top}px`;
+
+    // Get the position of the cart
+    const cart = document.getElementById('navbar-quote-button');
+    const cartRect = cart.getBoundingClientRect();
+
+    // Calculate the translation required
+    const translateX = cartRect.left - buttonRect.left;
+    const translateY = cartRect.top - buttonRect.top;
+
+    // Set the CSS variables
+    buttonClone.style.setProperty('--cart-x', `${cartRect.left}px`);
+    buttonClone.style.setProperty('--button-x', `${buttonRect.left}px`);
+    buttonClone.style.setProperty('--cart-y', `${cartRect.top}px`);
+    buttonClone.style.setProperty('--button-y', `${buttonRect.top}px`);
+
+    // Apply the animation class
+    buttonClone.classList.add('move-to-cart');
+
+    // Clean up after animation
+    buttonClone.addEventListener('transitionend', function() {
+        buttonClone.remove();
+    });
+  }
 
   function renderCartItems() {
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
