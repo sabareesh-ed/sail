@@ -136,10 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
         buttonClone.style.transition = 'opacity 2s ease-out';
     }, 1000);  // Start fading out after 1 second
 
-    // Clean up after animation
-    buttonClone.addEventListener('transitionend', function() {
-        buttonClone.remove();
-    });
 }
 
 
