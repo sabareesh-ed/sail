@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateButtonStyles(itemId) {
-    let button = document.querySelector(`div[role="button"][data-item-id="${itemId}"]`);
+    let button = document.querySelector(`div[data-item-id="${itemId}"] > div[role="button"]`);
     if (!button) return;
 
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
