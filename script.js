@@ -77,10 +77,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
     let isItemInCart = storedItems.some(item => item.id === itemId);
 
+    console.log("button", button)
+    console.log("button.style.backgroundColor", button.style.backgroundColor)
+
     if (isItemInCart) {
-        button.style.backgroundColor = 'green'; // Change background color to green
+        button.style.backgroundColor = 'green'; 
     } else {
-        button.style.backgroundColor = ''; // Reset to default color if needed
+        button.style.backgroundColor = ''; 
     }
   }
 
