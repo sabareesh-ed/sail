@@ -229,9 +229,11 @@ function updateButtonInnerText(itemId) {
 
     if (itemCount > 0) {
         // Cart has items, change the button and text color
-        quoteButton.style.backgroundColor = '#222';
+        quoteButton.style.backgroundColor = '#333';
+        quoteButton.style.color = '#f9f7e1'
         if (quoteCountText) {
-            quoteCountText.style.color = '#f9f7e1';
+            quoteCountText.style.color = '#333';
+            quoteCountText.style.backgroundColor = '#333';
         }
     } else {
         // Cart is empty, reset to default colors
