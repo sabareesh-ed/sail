@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // toggleCartDisplay();
         updateButtonStyles(itemId); 
 
-        tooltip.style.display = 'block';
+        tooltip.style.display = 'flex';
 
     // Hide the tooltip after 3 seconds
     setTimeout(() => {
