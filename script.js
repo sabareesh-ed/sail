@@ -66,8 +66,23 @@ document.addEventListener("DOMContentLoaded", function () {
     if (itemName && itemId) {
         addItemToLocalStorage(itemName, itemId, itemType);
         // toggleCartDisplay();
+        updateButtonStyles(itemId); 
     }
-}
+  }
+
+  function updateButtonStyles(itemId) {
+    let button = document.querySelector(`div[role="button"][data-item-id="${itemId}"]`);
+    if (!button) return;
+
+    let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
+    let isItemInCart = storedItems.some(item => item.id === itemId);
+
+    if (isItemInCart) {
+        button.style.backgroundColor = 'green'; // Change background color to green
+    } else {
+        button.style.backgroundColor = ''; // Reset to default color if needed
+    }
+  }
 
   document.querySelectorAll("#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote")
   .forEach(buttonDiv => {
@@ -155,8 +170,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote")
     .forEach(buttonDiv => {
         updateButtonInnerText(buttonDiv.getAttribute("data-item-id"));
+        updateButtonStyles(buttonDiv.getAttribute("data-item-id")); // Reset styles
     });
-}
+  }
 
 function updateButtonInnerText(itemId) {
   let button = document.querySelector(`div[role="button"][data-item-id="${itemId}"]`);
