@@ -100,6 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let quoteCount = document.getElementById("quote-count");
 
+    storedItems.forEach(item => {
+      updateButtonStyles(item.id);
+    });
+
     if (storedItems.length === 0) {
         if (quoteCount) {
           quoteCount.style.display = 'none';
