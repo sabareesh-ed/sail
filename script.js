@@ -71,26 +71,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateButtonStyles(itemId) {
-    // First try to select the button div directly
-    let button = document.querySelector(`div[id="add-${itemId}-quote"]`);
-
-    // If not found, try the nested structure as in "Add Opportunities"
-    if (!button) {
-        button = document.querySelector(`div[data-item-id="${itemId}"] > div[role="button"]`);
-    }
-
+    let button = document.querySelector(`div[role="button"][data-item-id="${itemId}"]`);
     if (!button) return;
 
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
     let isItemInCart = storedItems.some(item => item.id === itemId);
 
+    console.log("button", button)
+    console.log("button.style.backgroundColor", button.style.backgroundColor)
+
     if (isItemInCart) {
         button.style.backgroundColor = 'green'; 
     } else {
-        button.style.backgroundColor = ''; // reset to default
+        button.style.backgroundColor = ''; 
     }
   }
-
 
   document.querySelectorAll("#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote")
   .forEach(buttonDiv => {
