@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("button.style.backgroundColor", button.style.backgroundColor)
 
     if (isItemInCart) {
-        button.style.backgroundColor = 'green'; 
+        button.style.backgroundColor = '#e26d2a'; 
     } else {
         button.style.backgroundColor = ''; 
     }
@@ -192,7 +192,7 @@ function updateButtonInnerText(itemId) {
   let buttonTextElement = button.querySelector('.text-size-small'); 
   if (buttonTextElement) {
     let htmlContent = isItemInCart 
-        ? '<span class="text-size-small">Added</span>'
+        ? '<span class="text-size-small">Added to quote!</span>'
         : '<span class="text-size-small">+ Add to quote</span>';
 
     buttonTextElement.innerHTML = htmlContent;
