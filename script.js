@@ -51,7 +51,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Save back to local storage
     localStorage.setItem("quotedItems", JSON.stringify(storedItems));
     renderCartItems();
+
+    showTooltip();
   }
+
+  function showTooltip() {
+    const tooltip = document.querySelector('.added-to-quote-tooltip');
+
+    // Add 'fade-in' class to show the tooltip
+    tooltip.classList.add('fade-in');
+    tooltip.classList.remove('fade-out');
+
+    // Set a timeout to hide the tooltip after 4 seconds
+    setTimeout(() => {
+        tooltip.classList.add('fade-out');
+        tooltip.classList.remove('fade-in');
+    }, 4000); // 4000 milliseconds = 4 seconds
+}
 
   function handleButtonClick(event) {
     // Find the closest ancestor div with role="button"
