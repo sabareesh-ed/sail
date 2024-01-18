@@ -51,37 +51,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Save back to local storage
     localStorage.setItem("quotedItems", JSON.stringify(storedItems));
     renderCartItems();
-
-    showTooltip();
-
-    // Hide tooltip after 4 seconds
-    setTimeout(hideTooltip, 4000);
   }
-
-  function showTooltip() {
-    var tooltip = document.querySelector('.added-to-quote-tooltip');
-    if (tooltip) {
-        tooltip.classList.add('visible');
-    }
-}
-
-function hideTooltip() {
-    var tooltip = document.querySelector('.added-to-quote-tooltip');
-    if (tooltip) {
-        tooltip.classList.remove('visible');
-        // Use 'transitionend' event to set display to 'none' after fade-out
-        tooltip.addEventListener('transitionend', function() {
-            tooltip.style.display = 'none';
-        }, { once: true });
-    }
-}
-
 
   function handleButtonClick(event) {
     // Find the closest ancestor div with role="button"
     let buttonDiv = event.target.closest('div[role="button"]');
     if (!buttonDiv) return; 
 
+    const tooltip = document.querySelector('.added-to-quote-tooltip-text');
 
     let itemType = buttonDiv.getAttribute("data-item-type");
     let itemName = buttonDiv.getAttribute("data-item-name");
@@ -91,6 +68,13 @@ function hideTooltip() {
         addItemToLocalStorage(itemName, itemId, itemType);
         // toggleCartDisplay();
         updateButtonStyles(itemId); 
+
+        tooltip.style.display = 'block';
+
+    // Hide the tooltip after 3 seconds
+    setTimeout(() => {
+        tooltip.style.display = 'none';
+    }, 3000); // 3000 milliseconds (3 seconds)
     }
   }
 
