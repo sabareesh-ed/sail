@@ -65,78 +65,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (itemName && itemId) {
         addItemToLocalStorage(itemName, itemId, itemType);
-        // toggleCartDisplay();
-        animateButtonToCart(buttonDiv);
+        toggleCartDisplay();
     }
-  }
+}
 
   document.querySelectorAll("#add-opportunities-quote, #add-convert-quote, #add-efficiency-quote")
   .forEach(buttonDiv => {
       buttonDiv.addEventListener("click", handleButtonClick);
   });
-
-  // function animateButtonToCart(button) {
-  //   const buttonClone = button.cloneNode(true);
-  //   buttonClone.style.position = 'absolute';
-  //   buttonClone.style.zIndex = 1000;
-  //   document.body.appendChild(buttonClone);
-
-  //   console.log("buttonClone",buttonClone)
-
-  //   // Position the clone on top of the original button
-  //   const buttonRect = button.getBoundingClientRect();
-  //   buttonClone.style.left = `${buttonRect.left}px`;
-  //   buttonClone.style.top = `${buttonRect.top}px`;
-
-  //   // Get the position of the cart
-  //   const cart = document.getElementById('navbar-quote-button');
-  //   const cartRect = cart.getBoundingClientRect();
-  //   console.log("cart",cart)
-  //   console.log("cartRect",cartRect)
-  //   console.log("buttonRect",buttonRect)
-
-
-  //   // Calculate the translation required
-  //   const translateX = cartRect.left - buttonRect.left;
-  //   const translateY = cartRect.top - buttonRect.top;
-
-  //   // Set the CSS variables
-  //   buttonClone.style.setProperty('--cart-x', `${cartRect.left}px`);
-  //   buttonClone.style.setProperty('--button-x', `${buttonRect.left}px`);
-  //   buttonClone.style.setProperty('--cart-y', `${cartRect.top}px`);
-  //   buttonClone.style.setProperty('--button-y', `${buttonRect.top}px`);
-
-  //   // Apply the animation class
-  //   buttonClone.classList.add('move-to-cart');
-
-  //   // Clean up after animation
-  //   buttonClone.addEventListener('transitionend', function() {
-  //       buttonClone.remove();
-  //   });
-  // }
-
-  function animateButtonToCart(button) {
-    const buttonClone = button.cloneNode(true);
-    buttonClone.style.position = 'absolute';
-    buttonClone.style.zIndex = '1000';
-    buttonClone.style.border = '2px solid red';  // Distinct border for visibility
-    buttonClone.style.background = 'lightblue'; // Distinct background for visibility
-    buttonClone.style.opacity = '1';            // Ensure it's fully visible to start
-
-    // Position the clone on top of the original button
-    const buttonRect = button.getBoundingClientRect();
-    buttonClone.style.left = `${buttonRect.left}px`;
-    buttonClone.style.top = `${buttonRect.top}px`;
-
-    document.body.appendChild(buttonClone);
-
-    // Simple fade-out animation
-    setTimeout(() => {
-        buttonClone.style.opacity = '0';
-        buttonClone.style.transition = 'opacity 2s ease-out';
-    }, 1000);  // Start fading out after 1 second
-
-}
 
 
   function renderCartItems() {
