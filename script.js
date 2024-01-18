@@ -100,6 +100,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let quoteCount = document.getElementById("quote-count");
 
+    updateQuoteButtonStyle(storedItems.length);
+
     storedItems.forEach(item => {
       updateButtonStyles(item.id);
       console.log("item.id",item.id)
@@ -220,6 +222,25 @@ function updateButtonInnerText(itemId) {
         quoteCount.textContent = count.toString();
     }
   }
+
+  function updateQuoteButtonStyle(itemCount) {
+    let quoteButton = document.getElementById("navbar-quote-button");
+    let quoteCountText = document.getElementById("quote-count");
+
+    if (itemCount > 0) {
+        // Cart has items, change the button and text color
+        quoteButton.style.backgroundColor = '#222';
+        if (quoteCountText) {
+            quoteCountText.style.color = '#f9f7e1';
+        }
+    } else {
+        // Cart is empty, reset to default colors
+        quoteButton.style.backgroundColor = ''; // Set this to your default color
+        if (quoteCountText) {
+            quoteCountText.style.color = ''; 
+        }
+    }
+}
 
 
   function updateFormInput(cartData) {
