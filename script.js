@@ -121,10 +121,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let clearButton = document.createElement('button');
         clearButton.textContent = 'Clear';
-        clearButton.className = 'quote-clear-button'; // class for styling
+        clearButton.className = 'quote-clear-button text-size-small font-dm-sans text-weight-bold'; // Added classes
+        clearButton.style.position = 'absolute';
+        clearButton.style.background = 'transparent';
+        clearButton.style.border = 'none';
+        clearButton.style.cursor = 'pointer';
         clearButton.addEventListener('click', clearCart);
         cartContentWrapper.appendChild(clearButton);
-
         let groupedItems = groupItemsByType(storedItems);
         let cartDataForForm = [];
 
