@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
         clearButton.textContent = 'Clear';
         clearButton.className = 'quote-clear-button text-size-small font-dm-sans text-weight-bold'; // Added classes
         clearButton.style.position = 'absolute';
+        clearButton.style.top = '4.31rem';
         clearButton.style.background = 'transparent';
         clearButton.style.border = 'none';
         clearButton.style.cursor = 'pointer';
