@@ -119,11 +119,13 @@ document.addEventListener("DOMContentLoaded", function () {
           quoteCount.textContent = storedItems.length.toString();
         }
 
+        let clearButtonWrapper = document.getElementById("navbar-clear-btn-wrapper");
         let clearButton = document.createElement('button');
         clearButton.textContent = 'Clear';
-        clearButton.className = 'quote-clear-button'; // class for styling
+        clearButton.className = 'quote-clear-button text-size-small font-dm-sans text-weight-bold'; // classes for styling
+        clearButton.style.background = 'transparent'; // transparent background
         clearButton.addEventListener('click', clearCart);
-        cartContentWrapper.appendChild(clearButton);
+        clearButtonWrapper.appendChild(clearButton); 
 
         let groupedItems = groupItemsByType(storedItems);
         let cartDataForForm = [];
