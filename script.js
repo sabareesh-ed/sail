@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         let clearButton = document.createElement('button');
-        clearButton.textContent = 'Clear';
+        clearButton.textContent = 'Clear All';
         clearButton.className = 'quote-clear-button text-size-small font-dm-sans text-weight-bold'; // Added classes
         clearButton.style.position = 'absolute';
         clearButton.style.top = '4.31rem';
