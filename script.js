@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let buttonDiv = event.target.closest('div[role="button"]');
     if (!buttonDiv) return; 
 
-    const tooltip = document.querySelector('.added-to-quote-tooltip-text');
 
     let itemType = buttonDiv.getAttribute("data-item-type");
     let itemName = buttonDiv.getAttribute("data-item-name");
@@ -68,13 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
         addItemToLocalStorage(itemName, itemId, itemType);
         // toggleCartDisplay();
         updateButtonStyles(itemId); 
-
-        tooltip.style.display = 'flex';
-
-    // Hide the tooltip after 3 seconds
-    setTimeout(() => {
-        tooltip.style.display = 'none';
-    }, 3000); // 3000 milliseconds (3 seconds)
     }
   }
 
@@ -129,9 +121,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let clearButton = document.createElement('button');
         clearButton.textContent = 'Clear';
-        clearButton.className = 'quote-clear-button'; // class for styling
+        clearButton.className = 'quote-clear-button text-size-small font-dm-sans text-weight-bold'; // add required classes
+        clearButton.style.background = 'transparent'; // make background transparent
         clearButton.addEventListener('click', clearCart);
-        cartContentWrapper.appendChild(clearButton);
+
+        let clearButtonWrapper = document.getElementById("navbar-clear-btn-wrapper");
+        if (clearButtonWrapper) {
+            clearButtonWrapper.innerHTML = ''; // Clear previous content
+            clearButtonWrapper.appendChild(clearButton); // Append the clear button to the new wrapper
+        }
 
         let groupedItems = groupItemsByType(storedItems);
         let cartDataForForm = [];
@@ -215,10 +213,6 @@ function updateButtonInnerText(itemId) {
     // }
     }
   }
-
-
-
-
 
   function updateQuoteButtonCount(cartData) {
     let quoteCount = document.getElementById("quote-count");
