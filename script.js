@@ -121,15 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let clearButton = document.createElement('button');
         clearButton.textContent = 'Clear';
-        clearButton.className = 'quote-clear-button text-size-small font-dm-sans text-weight-bold'; // add required classes
-        clearButton.style.background = 'transparent'; // make background transparent
+        clearButton.className = 'quote-clear-button'; // class for styling
         clearButton.addEventListener('click', clearCart);
-
-        let clearButtonWrapper = document.getElementById("navbar-clear-btn-wrapper");
-        if (clearButtonWrapper) {
-            clearButtonWrapper.innerHTML = ''; // Clear previous content
-            clearButtonWrapper.appendChild(clearButton); // Append the clear button to the new wrapper
-        }
+        cartContentWrapper.appendChild(clearButton);
 
         let groupedItems = groupItemsByType(storedItems);
         let cartDataForForm = [];
