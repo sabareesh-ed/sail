@@ -209,8 +209,6 @@ function updateButtonInnerText(itemId) {
   }
 
 
-
-
   function updateQuoteButtonCount(cartData) {
     let quoteCount = document.getElementById("quote-count");
     if (quoteCount) {
