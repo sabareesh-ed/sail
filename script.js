@@ -238,7 +238,7 @@ function updateButtonInnerText(itemId) {
 
   function createDeleteButton(index, itemId) {
       let deleteButton = document.createElement("button");
-      deleteButton.className = "navbar-cart-deletebtn";
+      deleteButton.className = "navbar-cart-deletebtn no-flex-shrink";
       
       let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svg.setAttribute("viewBox", "0 0 24 24");
