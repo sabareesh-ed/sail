@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let isItemInCart = storedItems.some(item => item.id === itemId);
 
     console.log("isIteminCart", isItemInCart)
-    console.log("button.style.backgroundColor", button.style.backgroundColor)
 
     if (isItemInCart) {
         button.style.backgroundColor = '#e26d2a'; 
@@ -296,11 +295,9 @@ function updateButtonInnerText(itemId) {
             localStorage.setItem("quotedItems", JSON.stringify(updatedItems));
             renderCartItems();
             updateButtonInnerText(itemId);
+            updateButtonStyles(itemId);
         }, 300); 
     }
-    storedItems.forEach(item => {
-      updateButtonStyles(item.id);
-      console.log("item.id",item.id)
-    });
+
 }
 });
