@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("testing");
+  console.log("testing 2");
   renderCartItems();
   $(document).ready(function () {
     $(".product-card").on("click", function () {
