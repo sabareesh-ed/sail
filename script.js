@@ -20,6 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function toggleCartDisplay() {
     cartContainer.classList.toggle('visible');
     cartOverlay.classList.toggle('visible');
+
+    // Disable scroll when quote cart open
+    if (cartContainer.classList.contains('visible')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
   }
 
   // Check if elements exist to avoid errors
