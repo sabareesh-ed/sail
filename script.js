@@ -298,6 +298,9 @@ function updateButtonInnerText(itemId) {
             updateButtonInnerText(itemId);
         }, 300); 
     }
-    updateButtonStyles(itemId);
+    storedItems.forEach(item => {
+      updateButtonStyles(item.id);
+      console.log("item.id",item.id)
+    });
 }
 });
