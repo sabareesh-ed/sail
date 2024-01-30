@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("testing 2");
+  console.log("Script loaded successfully!");
   renderCartItems();
   $(document).ready(function () {
     $(".product-card").on("click", function () {
@@ -84,8 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
     let isItemInCart = storedItems.some(item => item.id === itemId);
 
-    console.log("isIteminCart", isItemInCart)
-
     if (isItemInCart) {
         button.style.backgroundColor = '#e26d2a'; 
     } else {
@@ -108,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     storedItems.forEach(item => {
       updateButtonStyles(item.id);
-      console.log("item.id",item.id)
     });
 
     if (storedItems.length === 0) {
