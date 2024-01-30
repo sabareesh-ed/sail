@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isItemInCart) {
         button.style.backgroundColor = '#e26d2a'; 
     } else {
-        button.style.backgroundColor = ''; 
+        button.style.backgroundColor = '#838dfe'; 
     }
   }
 
