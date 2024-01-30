@@ -261,7 +261,6 @@ function updateButtonInnerText(itemId) {
 
       deleteButton.addEventListener("click", function() {
           removeItemFromCart(itemId);
-          updateButtonStyles(itemId);
       });
 
       return deleteButton;
@@ -299,5 +298,6 @@ function updateButtonInnerText(itemId) {
             updateButtonInnerText(itemId);
         }, 300); 
     }
+    updateButtonStyles(itemId);
 }
 });
