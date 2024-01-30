@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let storedItems = JSON.parse(localStorage.getItem("quotedItems")) || [];
     let isItemInCart = storedItems.some(item => item.id === itemId);
 
-    console.log("button", button)
+    console.log("isIteminCart", isItemInCart)
     console.log("button.style.backgroundColor", button.style.backgroundColor)
 
     if (isItemInCart) {
