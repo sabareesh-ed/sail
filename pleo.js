@@ -110,9 +110,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    document.getElementById('back-button-alldone').addEventListener('click', function() {
-        document.querySelector('.builder-wrapper').style.display = 'none';
-    });
+    const backButtonAllDone = document.getElementById('back-button-alldone');
+    if (backButtonAllDone) {
+        backButtonAllDone.addEventListener('click', function() {
+            document.querySelector('.builder-wrapper').style.display = 'none';
+        });
+    } else {
+        console.log('back-button-alldone not found');
+    }
+
 
     document.querySelectorAll('.w-input').forEach(input => {
         input.addEventListener('input', function() {
