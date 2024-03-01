@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const backButton = wrapper.querySelector('.back-button');
         const skipButton = wrapper.querySelector('.button.is-skip');
 
-        [nextButton, skipButton].forEach(button => {
-            button.addEventListener('click', function() {
-                saveFormData(wrapper.id);
+        if (nextButton) {
+            nextButton.addEventListener('click', function() {
+                saveFormData(wrapper.id); // Save data for the current section
                 if(index < controlWrappers.length - 1) {
                     controlWrappers[index].style.display = 'none';
                     controlWrappers[index + 1].style.display = 'flex';
@@ -70,7 +70,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert('All sections completed.');
                 }
             });
-        });
+        }
+
+        // Event listener for Skip button
+        if (skipButton) {
+            skipButton.addEventListener('click', function() {
+                if(index < controlWrappers.length - 1) {
+                    controlWrappers[index].style.display = 'none';
+                    controlWrappers[index + 1].style.display = 'flex';
+                } else {
+                    alert('All sections completed.');
+                }
+            });
+        }
 
         backButton.addEventListener('click', function() {
             if(index === 0) {
