@@ -98,8 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     perDiemCheckboxes.forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
-            console.log("change")
             const associatedInput = this.closest('.input').querySelector('.text-field');
+            console.log("change", associatedInput)
 
             if (this.checked) {
                 associatedInput.disabled = true;
