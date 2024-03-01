@@ -95,17 +95,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const perDiemCheckboxes = document.querySelectorAll('.w-checkbox-input.checkbox');
-    console.log("perDiemCheckboxes",perDiemCheckboxes)
-    perDiemCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            console.log("event listener",this.checked)
-            const associatedInputField = this.closest('.input').querySelector('.text-field');
 
-            if(this.checked) {
-                associatedInputField.disabled = true;
-                associatedInputField.value = '';
+    perDiemCheckboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            console.log("change")
+            const associatedInput = this.closest('.input').querySelector('.text-field');
+
+            if (this.checked) {
+                associatedInput.disabled = true;
+                associatedInput.value = '';
             } else {
-                associatedInputField.disabled = false;
+                associatedInput.disabled = false;
             }
         });
     });
