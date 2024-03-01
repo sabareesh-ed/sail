@@ -94,22 +94,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Query all Per Diem checkboxes
     const perDiemCheckboxes = document.querySelectorAll('.w-checkbox-input.checkbox');
-
+    console.log("perDiemCheckboxes",perDiemCheckboxes)
     perDiemCheckboxes.forEach(checkbox => {
-        // Attach event listener to each checkbox
         checkbox.addEventListener('change', function() {
-            // Assuming the associated input field is immediately before the checkbox
-            // Adjust the selector as needed to correctly target your specific structure
+            console.log("event listener",this.checked)
             const associatedInputField = this.closest('.input').querySelector('.text-field');
 
             if(this.checked) {
-                // Checkbox is checked, disable the associated input field
                 associatedInputField.disabled = true;
-                associatedInputField.value = ''; // Optionally clear the value
+                associatedInputField.value = '';
             } else {
-                // Checkbox is not checked, enable the associated input field
                 associatedInputField.disabled = false;
             }
         });
