@@ -98,14 +98,24 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        if (backButtonAllDone) {
-            backButtonAllDone.addEventListener('click', function() {
-                document.querySelector('.builder-wrapper').style.display = 'none';
-            });
-        } else {
-            console.log('back-button-alldone not found');
-        }
+        // if (backButtonAllDone) {
+        //     backButtonAllDone.addEventListener('click', function() {
+        //         document.querySelector('.builder-wrapper').style.display = 'none';
+        //     });
+        // } else {
+        //     console.log('back-button-alldone not found');
+        // }
     });
+
+    const backButtonAllDone = document.getElementById('back-8');
+    console.log(backButtonAllDone, "backButtonAllDone")
+    if (backButtonAllDone) {
+        backButtonAllDone.addEventListener('click', function() {
+            document.querySelector('.builder-wrapper').style.display = 'none';
+        });
+    } else {
+        console.log('back-button-alldone not found');
+    }
 
     const perDiemCheckboxes = document.querySelectorAll('.w-checkbox-input.checkbox');
 
