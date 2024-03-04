@@ -85,15 +85,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         console.log("back button", backButton)
+        
+        if (backButton) {
+            backButton.addEventListener('click', function() {
+                if(index === 0) {
+                    toggleDisplay('builder-wrapper', 'none');
+                } else {
+                    controlWrappers[index].style.display = 'none';
+                    controlWrappers[index - 1].style.display = 'flex';
+                }
+            });
+        }
 
-        backButton.addEventListener('click', function() {
-            if(index === 0) {
-                toggleDisplay('builder-wrapper', 'none');
-            } else {
-                controlWrappers[index].style.display = 'none';
-                controlWrappers[index - 1].style.display = 'flex';
-            }
-        });
     });
 
     const perDiemCheckboxes = document.querySelectorAll('.w-checkbox-input.checkbox');
