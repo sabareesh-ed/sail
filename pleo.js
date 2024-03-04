@@ -74,29 +74,47 @@ document.addEventListener('DOMContentLoaded', function() {
         const skipButton = wrapper.querySelector('.button.is-skip');
         const backButtonAllDone = wrapper.querySelector('.back-button-alldone');
 
+        function navigateToNextSection(index, controlWrappers) {
+            if (index < controlWrappers.length - 1) {
+                controlWrappers[index].style.display = 'none'; // Hide current section
+                controlWrappers[index + 1].style.display = 'flex'; // Show next section
+            } else {
+                alert('All sections completed.');
+            }
+        }        
+
         if (nextButton) {
             nextButton.addEventListener('click', function() {
-                saveFormData(wrapper.id); // Save data for the current section
-                if(index < controlWrappers.length - 1) {
-                    controlWrappers[index].style.display = 'none';
-                    controlWrappers[index + 1].style.display = 'flex';
+                // Check if at least one input is filled in the current section
+                const inputs = wrapper.querySelectorAll('.w-input');
+                const isAnyInputFilled = Array.from(inputs).some(input => input.value.trim() !== '');
+
+                if (isAnyInputFilled) {
+                    saveFormData(wrapper.id); // Save data for the current section
+                    navigateToNextSection(index, controlWrappers);
                 } else {
-                    alert('All sections completed.');
+                    alert('Please fill in at least one field before proceeding.');
                 }
             });
         }
 
+
         // Event listener for Skip button
         if (skipButton) {
             skipButton.addEventListener('click', function() {
-                if(index < controlWrappers.length - 1) {
-                    controlWrappers[index].style.display = 'none';
-                    controlWrappers[index + 1].style.display = 'flex';
-                } else {
-                    alert('All sections completed.');
-                }
+                // Clear all input fields in the current section
+                const inputs = wrapper.querySelectorAll('.w-input');
+                inputs.forEach(input => {
+                    input.value = ''; // Clear the input
+                    if (input.type === 'checkbox' || input.type === 'radio') {
+                        input.checked = false; // Uncheck if it's a checkbox or radio button
+                    }
+                });
+
+                navigateToNextSection(index, controlWrappers);
             });
         }
+
 
         console.log("back button", backButton)
         
