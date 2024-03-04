@@ -50,8 +50,21 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('startButton').addEventListener('click', function() {
         const companyName = document.getElementById('companyName').value;
         saveFormData('welcome', { companyName: companyName });
+        
+        // Hide all sections first
+        allSections.forEach(section => {
+            section.style.display = 'none';
+        });
+        
+        // Show only the first section
+        if(allSections.length > 0) {
+            allSections[0].style.display = 'flex';
+        }
+        
+        // Show the builder wrapper
         toggleDisplay('builder-wrapper', 'flex');
     });
+
 
     // Event listeners for back and next/skip buttons
     const controlWrappers = document.querySelectorAll('.controls-wrapper .controls');
@@ -97,14 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
-
-        // if (backButtonAllDone) {
-        //     backButtonAllDone.addEventListener('click', function() {
-        //         document.querySelector('.builder-wrapper').style.display = 'none';
-        //     });
-        // } else {
-        //     console.log('back-button-alldone not found');
-        // }
     });
 
     const backButtonAllDone = document.getElementById('back-8');
