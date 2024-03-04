@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
+        console.log("back button", backButton)
+
         backButton.addEventListener('click', function() {
             if(index === 0) {
                 toggleDisplay('builder-wrapper', 'none');
