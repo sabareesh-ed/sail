@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextButton = wrapper.querySelector('.button:not(.is-skip)');
         const backButton = wrapper.querySelector('.back-button');
         const skipButton = wrapper.querySelector('.button.is-skip');
+        const backButtonAllDone = wrapper.querySelector('.back-button-alldone');
 
         if (nextButton) {
             nextButton.addEventListener('click', function() {
@@ -97,6 +98,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
+        if (backButtonAllDone) {
+            backButtonAllDone.addEventListener('click', function() {
+                document.querySelector('.builder-wrapper').style.display = 'none';
+            });
+        } else {
+            console.log('back-button-alldone not found');
+        }
     });
 
     const perDiemCheckboxes = document.querySelectorAll('.w-checkbox-input.checkbox');
@@ -114,16 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    const backButtonAllDone = document.getElementById('back-button-alldone');
-    if (backButtonAllDone) {
-        backButtonAllDone.addEventListener('click', function() {
-            document.querySelector('.builder-wrapper').style.display = 'none';
-        });
-    } else {
-        console.log('back-button-alldone not found');
-    }
-
 
     document.querySelectorAll('.w-input').forEach(input => {
         input.addEventListener('input', function() {
