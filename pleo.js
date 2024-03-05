@@ -48,8 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = JSON.parse(localStorage.getItem('form-data')) || {};
         const companyName = JSON.parse(localStorage.getItem('welcome')) || "Your Company Name";
 
-        console.log("formdata",formData)
-
         const companySpan = document.querySelector('.policy-title-bold');
         if (companySpan) companySpan.innerText = companyName;
 
@@ -60,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Accommodation
         if (formData.accomodation) {
+            document.getElementById('accomodationWrap').style.display = 'flex';
             updateSpanTextById('howToBookTripsSpan', formData.accomodation.howToBookTrips || '');
             if (formData.accomodation.accomodationPerDiem) {
                 updateSpanTextById('budgetPerDiemSpan', 'Maximum budget per person per night is set by your per diem policy.');
