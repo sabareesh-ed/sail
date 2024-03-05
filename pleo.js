@@ -99,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
 
-        // Event listener for Skip button
         if (skipButton) {
             skipButton.addEventListener('click', function() {
                 // Clear all input fields in the current section
@@ -110,7 +109,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         input.checked = false; // Uncheck if it's a checkbox or radio button
                     }
                 });
-
+        
+                // Clear the corresponding section's data from localStorage
+                const currentData = JSON.parse(localStorage.getItem('form-data')) || {};
+                if (currentData[wrapper.id]) {
+                    delete currentData[wrapper.id]; // Delete the section's data
+                    localStorage.setItem('form-data', JSON.stringify(currentData)); // Update localStorage
+                }
+        
                 navigateToNextSection(index, controlWrappers);
             });
         }
