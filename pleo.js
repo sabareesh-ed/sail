@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = JSON.parse(localStorage.getItem('form-data')) || {};
         const companyName = JSON.parse(localStorage.getItem('welcome')) || "Your Company Name";
 
+        console.log("formdata",formData)
+
         const companySpan = document.querySelector('.policy-title-bold');
         if (companySpan) companySpan.innerText = companyName;
 
