@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener for the start button
     document.getElementById('startButton').addEventListener('click', function() {
         const companyName = document.getElementById('companyName').value;
+        console.log(">>>",companyName)
         saveFormData('welcome', { companyName: companyName });
         
         allSections.forEach(section => {
