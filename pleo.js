@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("code works")
+    updatePolicyDetails();
 
     const allSections = document.querySelectorAll('.controls');
     allSections.forEach(section => {
@@ -42,6 +43,65 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('companyName').value = companyName;
         }
     };
+
+    function updatePolicyDetails() {
+        const formData = JSON.parse(localStorage.getItem('form-data')) || {};
+        const companyName = JSON.parse(localStorage.getItem('welcome')) || "Your Company Name";
+
+        const companySpan = document.querySelector('.policy-title-bold');
+        if (companySpan) companySpan.innerText = companyName;
+
+        // Accommodation
+        if (formData.accomodation) {
+            if (formData.accomodation.howToBookTrips) document.getElementById('howToBookTripsSpan').innerText = formData.accomodation.howToBookTrips;
+            if (formData.accomodation.budgetPerNight) document.getElementById('budgetPerNightSpan').innerText = formData.accomodation.budgetPerNight;
+            if (formData.accomodation.accomodationExtra) document.getElementById('accomodationExtraSpan').innerText = formData.accomodation.accomodationExtra;
+        }
+
+        // Food
+        if (formData.food) {
+            if (formData.food.breakfast) document.getElementById('breakfastSpan').innerText = formData.food.breakfast;
+            if (formData.food.lunch) document.getElementById('lunchSpan').innerText = formData.food.lunch;
+            if (formData.food.dinner) document.getElementById('dinnerSpan').innerText = formData.food.dinner;
+            if (formData.food.extraFood) document.getElementById('extraFoodSpan').innerText = formData.food.extraFood;
+        }
+
+        // Transport
+        if (formData.transport) {
+            if (formData.transport.airTravelPolicy) document.getElementById('airTravelPolicySpan').innerText = formData.transport.airTravelPolicy;
+            if (formData.transport.cityTravelPolicy) document.getElementById('cityTravelPolicySpan').innerText = formData.transport.cityTravelPolicy;
+            if (formData.transport.mileageAmount) document.getElementById('mileageAmountSpan').innerText = formData.transport.mileageAmount;
+            if (formData.transport.extraTransport) document.getElementById('extraTransportSpan').innerText = formData.transport.extraTransport;
+        }
+
+        // Conferences & Events
+        if (formData.conferences) {
+            if (formData.conferences.conferenceAmount) document.getElementById('conferenceAmountSpan').innerText = formData.conferences.conferenceAmount;
+            if (formData.conferences.extraConferences) document.getElementById('extraConferencesSpan').innerText = formData.conferences.extraConferences;
+        }
+
+        // Remote Work
+        if (formData.remote) {
+            if (formData.remote.softwareAmount) document.getElementById('softwareAmountSpan').innerText = formData.remote.softwareAmount;
+            if (formData.remote.hardwareAmount) document.getElementById('hardwareAmountSpan').innerText = formData.remote.hardwareAmount;
+            if (formData.remote.extraRemote) document.getElementById('extraRemoteSpan').innerText = formData.remote.extraRemote;
+        }
+
+        // Gifts & Flowers
+        if (formData['gifts-and-flowers']) {
+            if (formData['gifts-and-flowers'].clientAmount) document.getElementById('clientAmountSpan').innerText = formData['gifts-and-flowers'].clientAmount;
+            if (formData['gifts-and-flowers'].employeeAmount) document.getElementById('employeeAmountSpan').innerText = formData['gifts-and-flowers'].employeeAmount;
+            if (formData['gifts-and-flowers'].extraGifts) document.getElementById('extraGiftsSpan').innerText = formData['gifts-and-flowers'].extraGifts;
+        }
+
+        // Details
+        if (formData.details) {
+            if (formData.details.detailDays) document.getElementById('detailDaysSpan').innerText = formData.details.detailDays;
+            if (formData.details.detailsReimbursement) document.getElementById('detailsReimbursementSpan').innerText = formData.details.detailsReimbursement;
+            if (formData.details.contactName) document.getElementById('contactNameandEmailSpan').innerText = `${formData.details.contactName} (${formData.details.contactEmail})`;
+            if (formData.details.extraDetails) document.getElementById('extraDetailsSpan').innerText = formData.details.extraDetails;
+        }
+    }
     
 
     function populateInputsFromLocalStorage() {
@@ -198,4 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
             saveFormData(section);
         });
     });
+
+    setInterval(updatePolicyDetails, 1000);
+
 });
