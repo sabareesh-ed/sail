@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("code works")
-    populatePolicyDetails();
 
     const allSections = document.querySelectorAll('.controls');
     allSections.forEach(section => {
@@ -67,42 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
     loadCompanyName();
     populateInputsFromLocalStorage();
     toggleDisplay('builder-wrapper', 'none');
-
-    function populatePolicyDetails() {
-        const formData = JSON.parse(localStorage.getItem('form-data')) || {};
-        const companyName = JSON.parse(localStorage.getItem('welcome'));
-    
-        // Update company name
-        if (companyName) {
-            document.querySelector('.policy-title-bold').innerText = companyName;
-        }
-    
-        // Iterate over each key in formData to populate details
-        Object.keys(formData).forEach(section => {
-            const sectionData = formData[section];
-            Object.keys(sectionData).forEach(key => {
-                const valueElement = document.getElementById(key + 'Span');
-                if (valueElement) {
-                    valueElement.innerText = sectionData[key];
-                    // Only display the sentence if relevant data exists
-                    valueElement.closest('.detail-description').style.display = sectionData[key] ? 'block' : 'none';
-                }
-            });
-        });
-    }
-
-    let lastFormData = JSON.stringify(localStorage.getItem('form-data'));
-    let lastWelcomeData = JSON.stringify(localStorage.getItem('welcome'));
-
-    setInterval(() => {
-        const currentFormData = JSON.stringify(localStorage.getItem('form-data'));
-        const currentWelcomeData = JSON.stringify(localStorage.getItem('welcome'));
-        if (lastFormData !== currentFormData || lastWelcomeData !== currentWelcomeData) {
-            populatePolicyDetails(); // Re-populate if data has changed
-            lastFormData = currentFormData;
-            lastWelcomeData = currentWelcomeData;
-        }
-    }, 500);
 
     // Event listener for the start button
     document.getElementById('startButton').addEventListener('click', function() {
