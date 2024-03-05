@@ -72,24 +72,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Transport
-        if (formData.food) {
-            updateSpanTextById('airTravelPolicySpan', formData.food.airTravelPolicy || '');
-            updateSpanTextById('cityTravelPolicySpan', formData.food.cityTravelPolicy || '');
-            updateSpanTextById('mileageAmountSpan', formData.food.mileageAmount || '');
-            updateSpanTextById('extraTransportSpan', formData.food.extraTransport || '');
+        if (formData.transport) {
+            updateSpanTextById('airTravelPolicySpan', formData.transport.airTravelPolicy || '');
+            updateSpanTextById('cityTravelPolicySpan', formData.transport.cityTravelPolicy || '');
+            updateSpanTextById('mileageAmountSpan', formData.transport.mileageAmount || '');
+            updateSpanTextById('extraTransportSpan', formData.transport.extraTransport || '');
         }
 
         // Conferences & Events
-        if (formData.food) {
-            updateSpanTextById('conferenceAmountSpan', formData.food.conferenceAmount || '');
-            updateSpanTextById('extraConferencesSpan', formData.food.extraConferences || '');
+        if (formData.conferences) {
+            updateSpanTextById('conferenceAmountSpan', formData.conferences.conferenceAmount || '');
+            updateSpanTextById('extraConferencesSpan', formData.conferences.extraConferences || '');
         }
 
         // Remote Work
-        if (formData.food) {
-            updateSpanTextById('softwareAmountSpan', formData.food.softwareAmount || '');
-            updateSpanTextById('hardwareAmountSpan', formData.food.hardwareAmount || '');
-            updateSpanTextById('extraRemoteSpan', formData.food.extraRemote || '');
+        if (formData.remote) {
+            updateSpanTextById('softwareAmountSpan', formData.remote.softwareAmount || '');
+            updateSpanTextById('hardwareAmountSpan', formData.remote.hardwareAmount || '');
+            updateSpanTextById('extraRemoteSpan', formData.remote.extraRemote || '');
         }
 
         // Gifts & Flowers
@@ -100,9 +100,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Details
-        if (formData.food) {
-            updateSpanTextById('detailDaysSpan', formData.food.detailDays || '');
-            updateSpanTextById('detailsReimbursementSpan', formData.food.detailsReimbursement || '');
+        if (formData.details) {
+            updateSpanTextById('detailDaysSpan', formData.details.detailDays || '');
+            updateSpanTextById('detailsReimbursementSpan', formData.details.detailsReimbursement || '');
             if (formData.details) {
                 let contactInfo = '';
                 if (formData.details.contactName) {
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('contactNameandEmailSpan').innerText = extraDetails;
                 }
             }            
-            updateSpanTextById('extraDetailsSpan', formData.food.extraTransport || '');
+            updateSpanTextById('extraDetailsSpan', formData.details.extraTransport || '');
         }
     }
     
