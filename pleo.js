@@ -275,6 +275,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    setInterval(updatePolicyDetails, 1000);
+    setInterval(updatePolicyDetails, 100);
 
 });
