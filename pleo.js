@@ -51,17 +51,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const companyName = document.getElementById('companyName').value;
         saveFormData('welcome', { companyName: companyName });
         
-        // Hide all sections first
         allSections.forEach(section => {
             section.style.display = 'none';
         });
-        
-        // Show only the first section
+
         if(allSections.length > 0) {
             allSections[0].style.display = 'flex';
         }
         
-        // Show the builder wrapper
         toggleDisplay('builder-wrapper', 'flex');
     });
 
@@ -150,17 +147,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     perDiemCheckboxes.forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
-            const associatedInput = this.closest('.input').querySelector('.text-field');
-            console.log("change", associatedInput)
-
-            if (this.checked) {
-                associatedInput.disabled = true;
-                associatedInput.value = '';
-            } else {
-                associatedInput.disabled = false;
+            if (!this.closest('.controls').id.includes('all-done')) {
+                const associatedInput = this.closest('.input').querySelector('.text-field');
+                console.log("change", associatedInput);
+    
+                if (this.checked) {
+                    associatedInput.disabled = true;
+                    associatedInput.value = '';
+                } else {
+                    associatedInput.disabled = false;
+                }
             }
         });
     });
+    
 
     document.querySelectorAll('.w-input').forEach(input => {
         input.addEventListener('input', function() {
