@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener for the start button
     document.getElementById('startButton').addEventListener('click', function() {
         const companyName = document.getElementById('companyName').value;
-        console.log(">>>",companyName)
         saveFormData('welcome', { companyName: companyName });
         
         allSections.forEach(section => {
@@ -154,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
                 if (this.checked) {
                     associatedInput.disabled = true;
-                    associatedInput.value = '';
+                    // associatedInput.value = '';
                 } else {
                     associatedInput.disabled = false;
                 }
