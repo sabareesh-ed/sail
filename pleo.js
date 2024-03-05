@@ -61,14 +61,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Accommodation
         if (formData.accomodation) {
             updateSpanTextById('howToBookTripsSpan', formData.accomodation.howToBookTrips || '');
-            if (formData.accomodation.accomodationPerDiem) {
-                updateSpanTextById('budgetPerDiemSpan', 'Maximum budget per person per night is set by your per diem policy.');
-            } else {
-                updateSpanTextById('budgetPerNightSpan', formData.accomodation.budgetPerNight || '');
-            }
+            updateSpanTextById('budgetPerNightSpan', formData.accomodation.budgetPerNight || '');
             updateSpanTextById('accomodationExtraSpan', formData.accomodation.accomodationExtra || '');
         } else {
-            toggleDisplay('accomodationWrap', 'none')
+            updateSpanTextById('howToBookTripsSpan', '');
         }
 
         // Food
