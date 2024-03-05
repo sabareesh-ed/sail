@@ -36,14 +36,35 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const loadCompanyName = () => {
-        const storedData = JSON.parse(localStorage.getItem('form-data'));
-        if (storedData && storedData.welcome && storedData.welcome.companyName) {
-            document.getElementById('companyName').value = storedData.welcome.companyName;
+        const companyName = JSON.parse(localStorage.getItem('welcome'));
+
+        if (companyName) {
+            document.getElementById('companyName').value = companyName;
         }
     };
+    
+
+    function populateInputsFromLocalStorage() {
+        const storedData = JSON.parse(localStorage.getItem('form-data')) || {};
+    
+        Object.keys(storedData).forEach(section => {
+            const sectionData = storedData[section];
+            Object.keys(sectionData).forEach(key => {
+                const input = document.getElementById(key);
+                if (input) {
+                    if (input.type === 'checkbox' || input.type === 'radio') {
+                        input.checked = sectionData[key];
+                    } else {
+                        input.value = sectionData[key];
+                    }
+                }
+            });
+        });
+    }    
 
     // Initial load
     loadCompanyName();
+    populateInputsFromLocalStorage();
     toggleDisplay('builder-wrapper', 'none');
 
     // Event listener for the start button
