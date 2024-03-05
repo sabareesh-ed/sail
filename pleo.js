@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Accommodation
         if (formData.accomodation) {
-            document.getElementById('accomodationWrap').style.display = 'block';
+            document.getElementById('accomodationWrap').style.display = 'flex';
             if (formData.accomodation.howToBookTrips) {
                 updateSpanTextById('howToBookTripsSpan', formData.accomodation.howToBookTrips || '');
                 document.getElementById('accomodation-1').style.display = 'block';
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateSpanTextById('budgetPerNightSpan', formData.accomodation.budgetPerNight || '');
                 document.getElementById('accomodation-2').style.display = 'block';
             } else {
-                document.getElementById('accomodation-2').style.display = 'none';
+                document.getElementById('accomodation-2').style.display = 'block';
             }
             updateSpanTextById('accomodationExtraSpan', formData.accomodation.accomodationExtra || '');
         } else {
@@ -80,45 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Food
-        function getMessage(perDiem, amount, mealType) {
-            if(perDiem) {
-                return `${mealType} - covered by the Per Diem policy`;
-            } else if(amount) {
-                return `${mealType} – up to ${amount} per person per meal`;
-            }
-            return '';
-        }
-    
-                // Breakfast
-                const breakfastMessage = getMessage(formData.food?.breakfastPerDiem, formData.food?.breakfast, 'Breakfast');
-                if(breakfastMessage) {
-                    document.getElementById('breakfastSpan').innerText = breakfastMessage;
-                    document.getElementById('food-1').style.display = 'flex';
-                } else {
-                    document.getElementById('food-1').style.display = 'none';
-                }
-            
-                // Lunch
-                const lunchMessage = getMessage(formData.food?.lunchPerDiem, formData.food?.lunch, 'Lunch');
-                if(lunchMessage) {
-                    document.getElementById('lunchSpan').innerText = lunchMessage;
-                    document.getElementById('food-2').style.display = 'flex';
-                } else {
-                    document.getElementById('food-2').style.display = 'none';
-                }
-            
-                // Dinner
-                const dinnerMessage = getMessage(formData.food?.dinnerPerDiem, formData.food?.dinner, 'Dinner');
-                if(dinnerMessage) {
-                    document.getElementById('dinnerSpan').innerText = dinnerMessage;
-                    document.getElementById('food-3').style.display = 'flex';
-                } else {
-                    document.getElementById('food-3').style.display = 'none';
-                }
-    
-        // Update Extra Food guidelines
-        if(formData.food?.extraFood) {
-            document.getElementById('extraFoodSpan').innerText = formData.food.extraFood;
+        if (formData.food) {
+            updateSpanTextById('breakfastSpan', formData.food.breakfast || '');
+            updateSpanTextById('lunchSpan', formData.food.lunch || '');
+            updateSpanTextById('dinnerSpan', formData.food.dinner || '');
+            updateSpanTextById('extraFoodSpan', formData.food.extraFood || '');
         }
 
         // Transport
