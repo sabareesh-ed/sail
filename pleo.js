@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
                 if (this.checked) {
                     associatedInput.disabled = true;
-                    // associatedInput.value = '';
+                    associatedInput.value = '';
                 } else {
                     associatedInput.disabled = false;
                 }
