@@ -58,19 +58,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Accommodation
         if (formData.accomodation) {
-            document.getElementById('accomodationWrap').style.display = 'flex';
+            document.getElementById('accomodationWrap').style.display = 'block';
             if (formData.accomodation.howToBookTrips) {
                 updateSpanTextById('howToBookTripsSpan', formData.accomodation.howToBookTrips || '');
-                document.getElementById('accomodation-1').style.display = 'flex';
+                document.getElementById('accomodation-1').style.display = 'block';
             } else {
                 document.getElementById('accomodation-1').style.display = 'none';
             }
             if (formData.accomodation.accomodationPerDiem) {
                 updateSpanTextById('budgetPerDiemSpan', 'Maximum budget per person per night is set by your per diem policy.');
-                document.getElementById('accomodation-1').style.display = 'flex';
+                document.getElementById('accomodation-1').style.display = 'block';
             } else if (formData.accomodation.accomodationPerDiem) {
                 updateSpanTextById('budgetPerNightSpan', formData.accomodation.budgetPerNight || '');
-                document.getElementById('accomodation-2').style.display = 'flex';
+                document.getElementById('accomodation-2').style.display = 'block';
             } else {
                 document.getElementById('accomodation-2').style.display = 'none';
             }
@@ -89,32 +89,32 @@ document.addEventListener('DOMContentLoaded', function() {
             return '';
         }
     
-        // Breakfast
-        const breakfastMessage = getMessage(formData.food?.breakfastPerDiem, formData.food?.breakfast, 'Breakfast');
-        if(breakfastMessage) {
-            document.getElementById('breakfastSpan').innerText = breakfastMessage;
-            document.getElementById('food-1').style.display = 'flex';
-        } else {
-            document.getElementById('food-1').style.display = 'none';
-        }
-    
-        // Lunch
-        const lunchMessage = getMessage(formData.food?.lunchPerDiem, formData.food?.lunch, 'Lunch');
-        if(lunchMessage) {
-            document.getElementById('lunchSpan').innerText = lunchMessage;
-            document.getElementById('food-2').style.display = 'flex';
-        } else {
-            document.getElementById('food-2').style.display = 'none';
-        }
-    
-        // Dinner
-        const dinnerMessage = getMessage(formData.food?.dinnerPerDiem, formData.food?.dinner, 'Dinner');
-        if(dinnerMessage) {
-            document.getElementById('dinnerSpan').innerText = dinnerMessage;
-            document.getElementById('food-3').style.display = 'flex';
-        } else {
-            document.getElementById('food-3').style.display = 'none';
-        }
+                // Breakfast
+                const breakfastMessage = getMessage(formData.food?.breakfastPerDiem, formData.food?.breakfast, 'Breakfast');
+                if(breakfastMessage) {
+                    document.getElementById('breakfastSpan').innerText = breakfastMessage;
+                    document.getElementById('food-1').style.display = 'flex';
+                } else {
+                    document.getElementById('food-1').style.display = 'none';
+                }
+            
+                // Lunch
+                const lunchMessage = getMessage(formData.food?.lunchPerDiem, formData.food?.lunch, 'Lunch');
+                if(lunchMessage) {
+                    document.getElementById('lunchSpan').innerText = lunchMessage;
+                    document.getElementById('food-2').style.display = 'flex';
+                } else {
+                    document.getElementById('food-2').style.display = 'none';
+                }
+            
+                // Dinner
+                const dinnerMessage = getMessage(formData.food?.dinnerPerDiem, formData.food?.dinner, 'Dinner');
+                if(dinnerMessage) {
+                    document.getElementById('dinnerSpan').innerText = dinnerMessage;
+                    document.getElementById('food-3').style.display = 'flex';
+                } else {
+                    document.getElementById('food-3').style.display = 'none';
+                }
     
         // Update Extra Food guidelines
         if(formData.food?.extraFood) {
