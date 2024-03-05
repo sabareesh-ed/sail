@@ -51,55 +51,71 @@ document.addEventListener('DOMContentLoaded', function() {
         const companySpan = document.querySelector('.policy-title-bold');
         if (companySpan) companySpan.innerText = companyName;
 
+        function updateSpanTextById(id, text) {
+            const span = document.getElementById(id);
+            if (span) span.innerText = text;
+        }
+
         // Accommodation
         if (formData.accomodation) {
-            if (formData.accomodation.howToBookTrips) document.getElementById('howToBookTripsSpan').innerText = formData.accomodation.howToBookTrips;
-            if (formData.accomodation.budgetPerNight) document.getElementById('budgetPerNightSpan').innerText = formData.accomodation.budgetPerNight;
-            if (formData.accomodation.accomodationExtra) document.getElementById('accomodationExtraSpan').innerText = formData.accomodation.accomodationExtra;
+            updateSpanTextById('howToBookTripsSpan', formData.accomodation.howToBookTrips || '');
+            updateSpanTextById('budgetPerNightSpan', formData.accomodation.budgetPerNight || '');
+            updateSpanTextById('accomodationExtraSpan', formData.accomodation.accomodationExtra || '');
         }
 
         // Food
         if (formData.food) {
-            if (formData.food.breakfast) document.getElementById('breakfastSpan').innerText = formData.food.breakfast;
-            if (formData.food.lunch) document.getElementById('lunchSpan').innerText = formData.food.lunch;
-            if (formData.food.dinner) document.getElementById('dinnerSpan').innerText = formData.food.dinner;
-            if (formData.food.extraFood) document.getElementById('extraFoodSpan').innerText = formData.food.extraFood;
+            updateSpanTextById('breakfastSpan', formData.food.breakfast || '');
+            updateSpanTextById('lunchSpan', formData.food.lunch || '');
+            updateSpanTextById('dinnerSpan', formData.food.dinner || '');
+            updateSpanTextById('extraFoodSpan', formData.food.extraFood || '');
         }
 
         // Transport
-        if (formData.transport) {
-            if (formData.transport.airTravelPolicy) document.getElementById('airTravelPolicySpan').innerText = formData.transport.airTravelPolicy;
-            if (formData.transport.cityTravelPolicy) document.getElementById('cityTravelPolicySpan').innerText = formData.transport.cityTravelPolicy;
-            if (formData.transport.mileageAmount) document.getElementById('mileageAmountSpan').innerText = formData.transport.mileageAmount;
-            if (formData.transport.extraTransport) document.getElementById('extraTransportSpan').innerText = formData.transport.extraTransport;
+        if (formData.food) {
+            updateSpanTextById('airTravelPolicySpan', formData.food.airTravelPolicy || '');
+            updateSpanTextById('cityTravelPolicySpan', formData.food.cityTravelPolicy || '');
+            updateSpanTextById('mileageAmountSpan', formData.food.mileageAmount || '');
+            updateSpanTextById('extraTransportSpan', formData.food.extraTransport || '');
         }
 
         // Conferences & Events
-        if (formData.conferences) {
-            if (formData.conferences.conferenceAmount) document.getElementById('conferenceAmountSpan').innerText = formData.conferences.conferenceAmount;
-            if (formData.conferences.extraConferences) document.getElementById('extraConferencesSpan').innerText = formData.conferences.extraConferences;
+        if (formData.food) {
+            updateSpanTextById('conferenceAmountSpan', formData.food.conferenceAmount || '');
+            updateSpanTextById('extraConferencesSpan', formData.food.extraConferences || '');
         }
 
         // Remote Work
-        if (formData.remote) {
-            if (formData.remote.softwareAmount) document.getElementById('softwareAmountSpan').innerText = formData.remote.softwareAmount;
-            if (formData.remote.hardwareAmount) document.getElementById('hardwareAmountSpan').innerText = formData.remote.hardwareAmount;
-            if (formData.remote.extraRemote) document.getElementById('extraRemoteSpan').innerText = formData.remote.extraRemote;
+        if (formData.food) {
+            updateSpanTextById('softwareAmountSpan', formData.food.softwareAmount || '');
+            updateSpanTextById('hardwareAmountSpan', formData.food.hardwareAmount || '');
+            updateSpanTextById('extraRemoteSpan', formData.food.extraRemote || '');
         }
 
         // Gifts & Flowers
         if (formData['gifts-and-flowers']) {
-            if (formData['gifts-and-flowers'].clientAmount) document.getElementById('clientAmountSpan').innerText = formData['gifts-and-flowers'].clientAmount;
-            if (formData['gifts-and-flowers'].employeeAmount) document.getElementById('employeeAmountSpan').innerText = formData['gifts-and-flowers'].employeeAmount;
-            if (formData['gifts-and-flowers'].extraGifts) document.getElementById('extraGiftsSpan').innerText = formData['gifts-and-flowers'].extraGifts;
+            updateSpanTextById('clientAmountSpan', formData['gifts-and-flowers'].clientAmount || '');
+            updateSpanTextById('employeeAmountSpan', formData['gifts-and-flowers'].employeeAmount || '');
+            updateSpanTextById('extraGiftsSpan', formData['gifts-and-flowers'].extraGifts || '');
         }
 
         // Details
-        if (formData.details) {
-            if (formData.details.detailDays) document.getElementById('detailDaysSpan').innerText = formData.details.detailDays;
-            if (formData.details.detailsReimbursement) document.getElementById('detailsReimbursementSpan').innerText = formData.details.detailsReimbursement;
-            if (formData.details.contactName) document.getElementById('contactNameandEmailSpan').innerText = `${formData.details.contactName} (${formData.details.contactEmail})`;
-            if (formData.details.extraDetails) document.getElementById('extraDetailsSpan').innerText = formData.details.extraDetails;
+        if (formData.food) {
+            updateSpanTextById('detailDaysSpan', formData.food.detailDays || '');
+            updateSpanTextById('detailsReimbursementSpan', formData.food.detailsReimbursement || '');
+            if (formData.details) {
+                let contactInfo = '';
+                if (formData.details.contactName) {
+                    contactInfo += formData.details.contactName;
+                }
+                if (formData.details.contactEmail) {
+                    contactInfo += (contactInfo ? ` (${formData.details.contactEmail})` : formData.details.contactEmail);
+                }
+                if (contactInfo) {
+                    document.getElementById('contactNameandEmailSpan').innerText = extraDetails;
+                }
+            }            
+            updateSpanTextById('extraDetailsSpan', formData.food.extraTransport || '');
         }
     }
     
