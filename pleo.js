@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('startButton').addEventListener('click', function() {
         const companyName = document.getElementById('companyName').value;
         console.log("companyName", companyName)
-        saveFormData('welcome', { companyName: companyName });
+        localStorage.setItem('welcome', JSON.stringify(companyName));
         
         allSections.forEach(section => {
             section.style.display = 'none';
