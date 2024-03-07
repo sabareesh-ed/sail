@@ -18,6 +18,21 @@ document.addEventListener('DOMContentLoaded', function() {
         allSections[0].style.display = 'flex';
     }
 
+    // Define the SVG markup
+    const svgMarkup = `
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+    `;
+
+    // Find all buttons with the class 'back-button'
+    const backButtons = document.querySelectorAll('.back-button');
+
+    // Append the SVG to each button
+    backButtons.forEach(button => {
+        button.innerHTML += svgMarkup;
+    });
+
     
     const saveFormData = (section) => {
         const inputs = document.querySelectorAll('#' + section + ' .w-input');
