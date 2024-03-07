@@ -131,11 +131,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Update Extra Food guidelines if provided
             if (formData.food.extraFood) {
                 updateInnerHTMLById('extraFoodSpan', formData.food.extraFood);
-                // Assuming there's a wrapper for extra guidelines that needs to be shown/hidden
-                document.getElementById('extraFoodGuidelines').style.display = 'flex'; 
+                document.getElementById('extraFoodSpan').style.display = 'flex'; 
             } else {
-                // Hide the wrapper for extra guidelines if it's empty or not provided
-                document.getElementById('extraFoodGuidelines').style.display = 'none'; 
+                document.getElementById('extraFoodSpan').style.display = 'none'; 
             }
         } else {
             document.getElementById('foodWrap').style.display = 'none'; // Hide the entire food section if no food data exists
