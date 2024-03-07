@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Breakfast – covered by the Per Diem policy' :
                     `Breakfast – up to <strong class="font-semibold">${formData.food.breakfast}</strong> per person per meal`;
                 updateInnerHTMLById('food-1', breakfastMessage);
-                document.getElementById('food-1').style.display = 'flex'; // Show breakfast detail
+                document.getElementById('food-1').style.display = 'block'; // Show breakfast detail
             } else {
                 document.getElementById('food-1').style.display = 'none'; // Hide breakfast detail if not applicable
             }
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Lunch – covered by the Per Diem policy' :
                     `Lunch – up to <strong class="font-semibold">${formData.food.lunch}</strong> per person per meal`;
                 updateInnerHTMLById('food-2', lunchMessage);
-                document.getElementById('food-2').style.display = 'flex'; // Show lunch detail
+                document.getElementById('food-2').style.display = 'block'; // Show lunch detail
             } else {
                 document.getElementById('food-2').style.display = 'none'; // Hide lunch detail if not applicable
             }
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Dinner – covered by the Per Diem policy' :
                     `Dinner – up to <strong class="font-semibold">${formData.food.dinner}</strong> per person per meal`;
                 updateInnerHTMLById('food-3', dinnerMessage);
-                document.getElementById('food-3').style.display = 'flex'; // Show dinner detail
+                document.getElementById('food-3').style.display = 'block'; // Show dinner detail
             } else {
                 document.getElementById('food-3').style.display = 'none'; // Hide dinner detail if not applicable
             }
