@@ -56,6 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (span) span.innerText = text;
         }
 
+        function updateInnerHTMLById(id, htmlContent) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.innerHTML = htmlContent;
+            }
+        }        
+
         // Accommodation
         if (formData.accomodation) {
             document.getElementById('accomodationWrap').style.display = 'flex';
