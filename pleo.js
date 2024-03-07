@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Transport Section
             const transportWrap = document.getElementById('transportWrap');
             if (formData.transport) {
-                transportWrap.style.display = 'block';
+                transportWrap.style.display = 'flex';
                 updateVisibilityAndContent('transport-1', 'airTravelPolicySpan', formData.transport.airTravelPolicy);
                 updateVisibilityAndContent('transport-2', 'cityTravelPolicySpan', formData.transport.cityTravelPolicy);
                 updateVisibilityAndContent('transport-3', 'mileageAmountSpan', formData.transport.mileageAmount);
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Conferences & Events Section
             const conferencesWrap = document.getElementById('conferencesWrap');
             if (formData.conferences) {
-                conferencesWrap.style.display = 'block';
+                conferencesWrap.style.display = 'flex';
                 updateVisibilityAndContent('conference-1', 'conferenceAmountSpan', formData.conferences.conferenceAmount);
                 updateVisibilityAndContent(null, 'extraConferencesSpan', formData.conferences.extraConferences, true);
             } else {
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Remote Work Section
             const remoteWorkWrap = document.getElementById('remoteWorkWrap');
             if (formData.remote) {
-                remoteWorkWrap.style.display = 'block';
+                remoteWorkWrap.style.display = 'flex';
                 updateVisibilityAndContent('remote-1', 'hardwareAmountSpan', formData.remote.hardwareAmount);
                 updateVisibilityAndContent('remote-2', 'softwareAmountSpan', formData.remote.softwareAmount);
                 updateVisibilityAndContent(null, 'extraRemoteSpan', formData.remote.extraRemote, true);
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Gifts & Flowers Section
             const giftsAndFlowersWrap = document.getElementById('giftsAndFlowersWrap');
             if (formData['gifts-and-flowers']) {
-                giftsAndFlowersWrap.style.display = 'block';
+                giftsAndFlowersWrap.style.display = 'flex';
                 updateVisibilityAndContent('gift-1', 'clientAmountSpan', formData['gifts-and-flowers'].clientAmount);
                 updateVisibilityAndContent('gift-2', 'employeeAmountSpan', formData['gifts-and-flowers'].employeeAmount);
                 updateVisibilityAndContent(null, 'extraGiftsSpan', formData['gifts-and-flowers'].extraGifts, true);
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Details Section
             const detailsWrap = document.getElementById('detailsWrap');
             if (formData.details) {
-                detailsWrap.style.display = 'block';
+                detailsWrap.style.display = 'flex';
                 updateVisibilityAndContent('detail-1', 'detailDaysSpan', formData.details.detailDays);
                 updateVisibilityAndContent('detail-2', 'detailsReimbursementSpan', formData.details.detailsReimbursement);
                 // For contactName and Email, assuming it needs special handling
