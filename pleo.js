@@ -2,30 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("code works")
     updatePolicyDetails();
 
-     const policyDisplayWrapper = document.querySelector('.policy-display-wrapper');
-
-    // Function to check window size and adjust display of policy-display-wrapper
-    function adjustDisplayForBreakpoint() {
-        if (window.innerWidth >= 1024) {
-            if (policyDisplayWrapper) {
-                policyDisplayWrapper.style.display = 'flex';
-            }
-        } else {
-            // Optional: You might want to keep this else block empty if you only want to show the wrapper at larger sizes
-            // and rely on other parts of your script (like the close button logic) to hide it.
-            // This block is here as an example in case you want to automatically hide the wrapper on smaller screens.
-            // if (policyDisplayWrapper) {
-            //     policyDisplayWrapper.style.display = 'none';
-            // }
-        }
-    }
-
-    // Listen for window resize events
-    window.addEventListener('resize', adjustDisplayForBreakpoint);
-
-    // Call the function initially to apply the correct display based on the initial size
-    adjustDisplayForBreakpoint();
-
     const allSections = document.querySelectorAll('.controls');
     allSections.forEach(section => {
         section.style.display = 'none';
