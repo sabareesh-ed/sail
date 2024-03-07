@@ -90,36 +90,57 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('accomodationWrap').style.display = 'none';
         }
 
-        // Food Section Update
+        // Assuming updateInnerHTMLById function is already defined
+        // Check for food data and apply logic accordingly
         if (formData.food) {
-            document.getElementById('foodWrap').style.display = 'flex'; // Show the food section if food data exists
+            document.getElementById('foodWrap').style.display = 'flex'; // Ensure the food section wrapper is shown
 
-            // Breakfast Detail
-            const breakfastContent = formData.food.breakfastPerDiem ? 
-                'Breakfast – covered by the Per Diem policy' : 
-                `Breakfast – up to <strong class="font-semibold">${formData.food.breakfast || '20$'}</strong> per person per meal`;
-            updateInnerHTMLById('food-1', breakfastContent);
+            // Breakfast
+            if (formData.food.breakfast || formData.food.breakfastPerDiem) {
+                const breakfastMessage = formData.food.breakfastPerDiem ?
+                    'Breakfast – covered by the Per Diem policy' :
+                    `Breakfast – up to <strong class="font-semibold">${formData.food.breakfast}</strong> per person per meal`;
+                updateInnerHTMLById('food-1', breakfastMessage);
+                document.getElementById('food-1').style.display = 'flex'; // Show breakfast detail
+            } else {
+                document.getElementById('food-1').style.display = 'none'; // Hide breakfast detail if not applicable
+            }
 
-            // Lunch Detail
-            const lunchContent = formData.food.lunchPerDiem ? 
-                'Lunch – covered by the Per Diem policy' : 
-                `Lunch – up to <strong class="font-semibold">${formData.food.lunch || '30$'}</strong> per person per meal`;
-            updateInnerHTMLById('food-2', lunchContent);
+            // Lunch
+            if (formData.food.lunch || formData.food.lunchPerDiem) {
+                const lunchMessage = formData.food.lunchPerDiem ?
+                    'Lunch – covered by the Per Diem policy' :
+                    `Lunch – up to <strong class="font-semibold">${formData.food.lunch}</strong> per person per meal`;
+                updateInnerHTMLById('food-2', lunchMessage);
+                document.getElementById('food-2').style.display = 'flex'; // Show lunch detail
+            } else {
+                document.getElementById('food-2').style.display = 'none'; // Hide lunch detail if not applicable
+            }
 
-            // Dinner Detail
-            const dinnerContent = formData.food.dinnerPerDiem ? 
-                'Dinner – covered by the Per Diem policy' : 
-                `Dinner – up to <strong class="font-semibold">${formData.food.dinner || '30$'}</strong> per person per meal`;
-            updateInnerHTMLById('food-3', dinnerContent);
+            // Dinner
+            if (formData.food.dinner || formData.food.dinnerPerDiem) {
+                const dinnerMessage = formData.food.dinnerPerDiem ?
+                    'Dinner – covered by the Per Diem policy' :
+                    `Dinner – up to <strong class="font-semibold">${formData.food.dinner}</strong> per person per meal`;
+                updateInnerHTMLById('food-3', dinnerMessage);
+                document.getElementById('food-3').style.display = 'flex'; // Show dinner detail
+            } else {
+                document.getElementById('food-3').style.display = 'none'; // Hide dinner detail if not applicable
+            }
 
-            // Update Extra Food guidelines, if present
+            // Update Extra Food guidelines if provided
             if (formData.food.extraFood) {
-                updateSpanTextById('extraFoodSpan', formData.food.extraFood);
+                updateInnerHTMLById('extraFoodSpan', formData.food.extraFood);
+                // Assuming there's a wrapper for extra guidelines that needs to be shown/hidden
+                document.getElementById('extraFoodGuidelines').style.display = 'flex'; 
+            } else {
+                // Hide the wrapper for extra guidelines if it's empty or not provided
+                document.getElementById('extraFoodGuidelines').style.display = 'none'; 
             }
         } else {
-            // Hide the food section if no food data exists
-            document.getElementById('foodWrap').style.display = 'none';
+            document.getElementById('foodWrap').style.display = 'none'; // Hide the entire food section if no food data exists
         }
+
 
 
         // Transport
