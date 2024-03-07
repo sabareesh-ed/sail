@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (content) {
                 // Options to potentially help with capturing the full content
                 const options = {
-                    scale: 1, // Adjust scale as needed; a higher scale can improve quality but increases file size
-                    useCORS: true, // Helps with loading images from external domains
-                    scrollX: 0, // Ensures it starts capturing from the top left corner
-                    scrollY: -window.scrollY, // Adjusts for any current scroll in the window
-                    windowHeight: document.documentElement.offsetHeight // Considers the full height of the document
+                    scale: 1, 
+                    useCORS: true, 
+                    scrollX: 0, 
+                    scrollY: -window.scrollY, 
+                    windowHeight: document.documentElement.offsetHeight 
                 };
 
                 html2canvas(content, options).then(canvas => {
