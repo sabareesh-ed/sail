@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Update Extra Food guidelines if provided
             if (formData.food.extraFood) {
-                updateInnerHTMLById('extraFoodSpan', formData.food.extraFood);
+                updateInnerHTMLById('extraFoodSpan', formData.food.extraFood); 
                 document.getElementById('extraFoodSpan').style.display = 'flex'; 
             } else {
                 document.getElementById('extraFoodSpan').style.display = 'none'; 
