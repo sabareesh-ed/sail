@@ -2,6 +2,26 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("code works")
     updatePolicyDetails();
 
+    const policyDisplayWrapper = document.querySelector('.policy-display-wrapper');
+
+    function adjustDisplayForBreakpoint() {
+        if (window.innerWidth >= 1024) {
+            if (policyDisplayWrapper) {
+                policyDisplayWrapper.style.display = 'flex';
+            }
+        } else {
+            if (policyDisplayWrapper) {
+                policyDisplayWrapper.style.display = 'none';
+            }
+        }
+    }
+
+    // Listen for window resize events
+    window.addEventListener('resize', adjustDisplayForBreakpoint);
+
+    // Call the function initially to apply the correct display based on the initial size
+    adjustDisplayForBreakpoint();
+
     const allSections = document.querySelectorAll('.controls');
     allSections.forEach(section => {
         section.style.display = 'none';
