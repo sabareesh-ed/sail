@@ -139,54 +139,89 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('foodWrap').style.display = 'none'; // Hide the entire food section if no food data exists
         }
 
+        function updatePolicySections(formData) {
+            // Transport Section
+            const transportWrap = document.getElementById('transportWrap');
+            if (formData.transport) {
+                transportWrap.style.display = 'block';
+                updateVisibilityAndContent('transport-1', 'airTravelPolicySpan', formData.transport.airTravelPolicy);
+                updateVisibilityAndContent('transport-2', 'cityTravelPolicySpan', formData.transport.cityTravelPolicy);
+                updateVisibilityAndContent('transport-3', 'mileageAmountSpan', formData.transport.mileageAmount);
+                updateVisibilityAndContent(null, 'extraTransportSpan', formData.transport.extraTransport, true); // No specific wrapper to show/hide
+            } else {
+                transportWrap.style.display = 'none';
+            }
 
+            // Conferences & Events Section
+            const conferencesWrap = document.getElementById('conferencesWrap');
+            if (formData.conferences) {
+                conferencesWrap.style.display = 'block';
+                updateVisibilityAndContent('conference-1', 'conferenceAmountSpan', formData.conferences.conferenceAmount);
+                updateVisibilityAndContent(null, 'extraConferencesSpan', formData.conferences.extraConferences, true);
+            } else {
+                conferencesWrap.style.display = 'none';
+            }
 
-        // Transport
-        if (formData.transport) {
-            updateSpanTextById('airTravelPolicySpan', formData.transport.airTravelPolicy || '');
-            updateSpanTextById('cityTravelPolicySpan', formData.transport.cityTravelPolicy || '');
-            updateSpanTextById('mileageAmountSpan', formData.transport.mileageAmount || '');
-            updateSpanTextById('extraTransportSpan', formData.transport.extraTransport || '');
-        }
+            // Remote Work Section
+            const remoteWorkWrap = document.getElementById('remoteWorkWrap');
+            if (formData.remote) {
+                remoteWorkWrap.style.display = 'block';
+                updateVisibilityAndContent('remote-1', 'hardwareAmountSpan', formData.remote.hardwareAmount);
+                updateVisibilityAndContent('remote-2', 'softwareAmountSpan', formData.remote.softwareAmount);
+                updateVisibilityAndContent(null, 'extraRemoteSpan', formData.remote.extraRemote, true);
+            } else {
+                remoteWorkWrap.style.display = 'none';
+            }
 
-        // Conferences & Events
-        if (formData.conferences) {
-            updateSpanTextById('conferenceAmountSpan', formData.conferences.conferenceAmount || '');
-            updateSpanTextById('extraConferencesSpan', formData.conferences.extraConferences || '');
-        }
+            // Gifts & Flowers Section
+            const giftsAndFlowersWrap = document.getElementById('giftsAndFlowersWrap');
+            if (formData['gifts-and-flowers']) {
+                giftsAndFlowersWrap.style.display = 'block';
+                updateVisibilityAndContent('gift-1', 'clientAmountSpan', formData['gifts-and-flowers'].clientAmount);
+                updateVisibilityAndContent('gift-2', 'employeeAmountSpan', formData['gifts-and-flowers'].employeeAmount);
+                updateVisibilityAndContent(null, 'extraGiftsSpan', formData['gifts-and-flowers'].extraGifts, true);
+            } else {
+                giftsAndFlowersWrap.style.display = 'none';
+            }
 
-        // Remote Work
-        if (formData.remote) {
-            updateSpanTextById('softwareAmountSpan', formData.remote.softwareAmount || '');
-            updateSpanTextById('hardwareAmountSpan', formData.remote.hardwareAmount || '');
-            updateSpanTextById('extraRemoteSpan', formData.remote.extraRemote || '');
-        }
-
-        // Gifts & Flowers
-        if (formData['gifts-and-flowers']) {
-            updateSpanTextById('clientAmountSpan', formData['gifts-and-flowers'].clientAmount || '');
-            updateSpanTextById('employeeAmountSpan', formData['gifts-and-flowers'].employeeAmount || '');
-            updateSpanTextById('extraGiftsSpan', formData['gifts-and-flowers'].extraGifts || '');
-        }
-
-        // Details
-        if (formData.details) {
-            updateSpanTextById('detailDaysSpan', formData.details.detailDays || '');
-            updateSpanTextById('detailsReimbursementSpan', formData.details.detailsReimbursement || '');
+            // Details Section
+            const detailsWrap = document.getElementById('detailsWrap');
             if (formData.details) {
-                let contactInfo = '';
-                if (formData.details.contactName) {
-                    contactInfo += formData.details.contactName;
-                }
+                detailsWrap.style.display = 'block';
+                updateVisibilityAndContent('detail-1', 'detailDaysSpan', formData.details.detailDays);
+                updateVisibilityAndContent('detail-2', 'detailsReimbursementSpan', formData.details.detailsReimbursement);
+                // For contactName and Email, assuming it needs special handling
+                let contactInfo = formData.details.contactName ? formData.details.contactName : '';
                 if (formData.details.contactEmail) {
-                    contactInfo += (contactInfo ? ` (${formData.details.contactEmail})` : formData.details.contactEmail);
+                    contactInfo += contactInfo ? ` (${formData.details.contactEmail})` : formData.details.contactEmail;
                 }
-                if (contactInfo) {
-                    document.getElementById('contactNameandEmailSpan').innerText = extraDetails;
-                }
-            }            
-            updateSpanTextById('extraDetailsSpan', formData.details.extraTransport || '');
+                document.getElementById('contactNameandEmailSpan').innerText = contactInfo;
+                updateVisibilityAndContent(null, 'extraDetailsSpan', formData.details.extraDetails, true); 
+            } else {
+                detailsWrap.style.display = 'none';
+            }
         }
+
+        // Helper function to update visibility and content of elements
+        function updateVisibilityAndContent(wrapperId, spanId, content, alwaysShowSpan = false) {
+            const spanElement = document.getElementById(spanId);
+            if (content) {
+                spanElement.innerText = content;
+                if (wrapperId && !alwaysShowSpan) {
+                    document.getElementById(wrapperId).style.display = 'block';
+                }
+            } else {
+                if (wrapperId && !alwaysShowSpan) {
+                    document.getElementById(wrapperId).style.display = 'none';
+                }
+                if (alwaysShowSpan) { // For spans that don't have a specific wrapper and should always be visible
+                    spanElement.innerText = ''; // Clear content if not applicable
+                }
+            }
+        }
+
+        updatePolicySections(formData);
+
     }
     
 
