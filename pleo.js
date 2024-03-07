@@ -90,13 +90,37 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('accomodationWrap').style.display = 'none';
         }
 
-        // Food
+        // Food Section Update
         if (formData.food) {
-            updateSpanTextById('breakfastSpan', formData.food.breakfast || '');
-            updateSpanTextById('lunchSpan', formData.food.lunch || '');
-            updateSpanTextById('dinnerSpan', formData.food.dinner || '');
-            updateSpanTextById('extraFoodSpan', formData.food.extraFood || '');
+            document.getElementById('foodWrap').style.display = 'flex'; // Show the food section if food data exists
+
+            // Breakfast Detail
+            const breakfastContent = formData.food.breakfastPerDiem ? 
+                'Breakfast – covered by the Per Diem policy' : 
+                `Breakfast – up to <strong class="font-semibold">${formData.food.breakfast || '20$'}</strong> per person per meal`;
+            updateInnerHTMLById('food-1', breakfastContent);
+
+            // Lunch Detail
+            const lunchContent = formData.food.lunchPerDiem ? 
+                'Lunch – covered by the Per Diem policy' : 
+                `Lunch – up to <strong class="font-semibold">${formData.food.lunch || '30$'}</strong> per person per meal`;
+            updateInnerHTMLById('food-2', lunchContent);
+
+            // Dinner Detail
+            const dinnerContent = formData.food.dinnerPerDiem ? 
+                'Dinner – covered by the Per Diem policy' : 
+                `Dinner – up to <strong class="font-semibold">${formData.food.dinner || '30$'}</strong> per person per meal`;
+            updateInnerHTMLById('food-3', dinnerContent);
+
+            // Update Extra Food guidelines, if present
+            if (formData.food.extraFood) {
+                updateSpanTextById('extraFoodSpan', formData.food.extraFood);
+            }
+        } else {
+            // Hide the food section if no food data exists
+            document.getElementById('foodWrap').style.display = 'none';
         }
+
 
         // Transport
         if (formData.transport) {
