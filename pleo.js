@@ -66,13 +66,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('accomodation-1').style.display = 'none';
             }
             if (formData.accomodation.accomodationPerDiem === true) {
+                console.log("1")
                 updateSpanTextById('budgetPerDiemSpan', 'Maximum budget per person per night is set by your per diem policy.');
                 document.getElementById('accomodation-2').style.display = 'block';
             } else if (formData.accomodation.budgetPerNight) {
+                console.log("2")
                 updateSpanTextById('budgetPerNightSpan', formData.accomodation.budgetPerNight || '');
                 document.getElementById('accomodation-2').style.display = 'block';
             } else {
                 document.getElementById('accomodation-2').style.display = 'none';
+                console.log("3")
             }
             updateSpanTextById('accomodationExtraSpan', formData.accomodation.accomodationExtra || '');
         } else {
