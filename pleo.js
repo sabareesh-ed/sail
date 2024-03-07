@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (formData.accomodation.accomodationPerDiem === true) {
                 updateSpanTextById('budgetPerDiemSpan', 'Maximum budget per person per night is set by your per diem policy.');
                 document.getElementById('accomodation-2').style.display = 'block';
-            } else if (formData.accomodation.accomodationPerDiem) {
+            } else if (formData.accomodation.budgetPerNight) {
                 updateSpanTextById('budgetPerNightSpan', formData.accomodation.budgetPerNight || '');
                 document.getElementById('accomodation-2').style.display = 'block';
             } else {
