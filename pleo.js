@@ -2,31 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("code works")
     updatePolicyDetails();
 
-    // Select the download button and add an event listener
-    document.querySelectorAll('.button-download').forEach(button => {
-        button.addEventListener('click', function() {
-            // Select the policy-display-wrapper content
-            const content = document.querySelector('.policy-display-wrapper');
-            if (content) {
-                // Use html2canvas to capture the content as a canvas
-                html2canvas(content).then(canvas => {
-                    // Initialize jsPDF
-                    const pdf = new jspdf.jsPDF({
-                        orientation: 'portrait',
-                        unit: 'pt',
-                        format: [canvas.width, canvas.height]
-                    });
-
-                    // Add the canvas as an image to the PDF
-                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, canvas.width, canvas.height);
-                    
-                    // Save the PDF
-                    pdf.save('policy-display.pdf');
-                });
-            }
-        });
-    });
-
     const policyDisplayWrapper = document.querySelector('.policy-display-wrapper');
 
     function adjustDisplayForBreakpoint() {
