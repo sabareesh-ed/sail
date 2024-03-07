@@ -2,6 +2,35 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("code works")
     updatePolicyDetails();
 
+    document.querySelectorAll('.button-download').forEach(button => {
+        button.addEventListener('click', function() {
+            const content = document.querySelector('.policy-display-wrapper');
+            if (content) {
+                // Options to potentially help with capturing the full content
+                const options = {
+                    scale: 1, // Adjust scale as needed; a higher scale can improve quality but increases file size
+                    useCORS: true, // Helps with loading images from external domains
+                    scrollX: 0, // Ensures it starts capturing from the top left corner
+                    scrollY: -window.scrollY, // Adjusts for any current scroll in the window
+                    windowHeight: document.documentElement.offsetHeight // Considers the full height of the document
+                };
+
+                html2canvas(content, options).then(canvas => {
+                    const imgWidth = 210; // A4 width in mm
+                    const pageHeight = 295;  // A4 height in mm
+                    const imgHeight = canvas.height * imgWidth / canvas.width;
+                    const heightLeft = imgHeight;
+
+                    const pdf = new jspdf.jsPDF('p', 'mm');
+                    const position = 0;
+
+                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+                    pdf.save('policy-display.pdf');
+                });
+            }
+        });
+    });
+
     const allSections = document.querySelectorAll('.controls');
     allSections.forEach(section => {
         section.style.display = 'none';
