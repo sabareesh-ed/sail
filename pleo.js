@@ -34,6 +34,29 @@ document.addEventListener('DOMContentLoaded', function() {
         button.innerHTML += svgMarkup;
     });
 
+    const previewButtons = document.querySelectorAll('.preview-button');
+    previewButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Find the policy-display-wrapper and change its display to flex
+            const policyDisplayWrapper = document.querySelector('.policy-display-wrapper');
+            if (policyDisplayWrapper) {
+                policyDisplayWrapper.style.display = 'flex';
+            }
+        });
+    });
+
+    // Find the element with the ID 'close-btn' and add a click event listener
+    const closeButton = document.getElementById('close-btn');
+    if (closeButton) {
+        closeButton.addEventListener('click', function() {
+            // Find the policy-display-wrapper and change its display to none
+            const policyDisplayWrapper = document.querySelector('.policy-display-wrapper');
+            if (policyDisplayWrapper) {
+                policyDisplayWrapper.style.display = 'none';
+            }
+        });
+    }
+
     
     const saveFormData = (section) => {
         const inputs = document.querySelectorAll('#' + section + ' .w-input');
