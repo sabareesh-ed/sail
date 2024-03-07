@@ -71,7 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('accomodation-2').style.display = 'block';
             } else if (formData.accomodation.budgetPerNight) {
                 console.log("2")
-                updateSpanTextById('budgetPerDiemSpan', `Maximum budget is <strong>${formData.accomodation.budgetPerNight}</strong> per person per night.` || '');
+                const budgetContent = `Maximum budget is <strong class="font-semibold">${formData.accomodation.budgetPerNight}</strong> per person per night.`;
+                updateInnerHTMLById('budgetPerDiemSpan', budgetContent);
                 document.getElementById('accomodation-2').style.display = 'block';
             } else {
                 document.getElementById('accomodation-2').style.display = 'none';
