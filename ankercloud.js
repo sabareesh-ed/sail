@@ -17,7 +17,6 @@ function updateReadingTimes() {
 
         // Select the text content of the post
         const text = post.querySelector('.w-richtext').textContent;
-        console.log(`Post ${index + 1} Text: `, text);
 
         // Calculate the reading time based on the text
         const readingTime = calculateReadingTime(text);
