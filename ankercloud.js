@@ -27,7 +27,7 @@ function updateReadingTimes() {
         const timeDisplay = post.querySelector('.reading-time');
 
         // Update the text content of the display element with the calculated reading time
-        timeDisplay.textContent = readingTime;
+        timeDisplay.textContent = readingTime ? readingTime : "1 min read";
         console.log(`Post ${index + 1} Updated With Reading Time: `, readingTime);
     });
 }
