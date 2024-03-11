@@ -9,7 +9,11 @@
 function updateReadingTimes() {
     const blogPosts = document.querySelectorAll('.timer');
 
+    console.log("updateReadingTimes")
+
+
     blogPosts.forEach(post => {
+        console.log("post",post)
         const text = post.querySelector('.w-richtext').textContent;
 
         const readingTime = calculateReadingTime(text);
