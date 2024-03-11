@@ -7,28 +7,22 @@
 }
 
 function updateReadingTimes() {
-    // Select all blog posts with class '.timer'
     const blogPosts = document.querySelectorAll('.timer');
     console.log("updateReadingTimes: Blog Posts Found", blogPosts.length);
 
     blogPosts.forEach((post, index) => {
         console.log(`Processing Post ${index + 1}`);
 
-        // Select the text content of the post
         const text = post.querySelector('.w-richtext').textContent;
 
-        // Calculate the reading time based on the text
         const readingTime = calculateReadingTime(text);
 
-        // Find the element where the reading time should be displayed
         const timeDisplay = post.querySelector('.reading-time');
 
         if (timeDisplay) {
-            // Update the text content of the display element with the calculated reading time
-            timeDisplay.textContent = readingTime ? readingTime : "1 min read";
+            timeDisplay.textContent = readingTime;
         } else {
-            // Log a warning if the .reading-time element does not exist in the post
-            console.warn(`Warning: Reading time display element not found for Post ${index + 1}.`);
+            timeDisplay.textContent = "1 min read";
         }
     });
 }
