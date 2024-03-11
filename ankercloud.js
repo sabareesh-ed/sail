@@ -16,11 +16,9 @@ function updateReadingTimes() {
 
         // Select the text content of the post
         const text = post.querySelector('.w-richtext').textContent;
-        console.log(`Post ${index + 1} Text: `, text);
 
         // Calculate the reading time based on the text
         const readingTime = calculateReadingTime(text);
-        console.log(`Post ${index + 1} Reading Time: `, readingTime);
 
         // Find the element where the reading time should be displayed
         const timeDisplay = post.querySelector('.reading-time');
@@ -28,7 +26,6 @@ function updateReadingTimes() {
         if (timeDisplay) {
             // Update the text content of the display element with the calculated reading time
             timeDisplay.textContent = readingTime ? readingTime : "1 min read";
-            console.log(`Post ${index + 1} Updated With Reading Time: `, readingTime);
         } else {
             // Log a warning if the .reading-time element does not exist in the post
             console.warn(`Warning: Reading time display element not found for Post ${index + 1}.`);
