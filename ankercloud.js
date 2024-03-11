@@ -1,29 +1,25 @@
-// Function to calculate reading time
-function calculateReadingTime(text) {
-    const wordsPerMinute = 200; // Average reading speed
-    const words = text.split(/\s+/).length; // Split by whitespace and count
+ // Function to calculate reading time
+ function calculateReadingTime(text) {
+    const wordsPerMinute = 200;
+    const words = text.split(/\s+/).length;
     const minutes = Math.ceil(words / wordsPerMinute);
     return `${minutes} min read`;
 }
-// Function to update all blog posts
+
 function updateReadingTimes() {
-    // Select all blog posts (assuming they have a class 'blog_card-content-wrapper')
-    const blogPosts = document.querySelectorAll('.blog_card-content-wrapper');
+    const blogPosts = document.querySelectorAll('.timer');
+
     blogPosts.forEach(post => {
-        // Find the text content of the post (assuming it's inside a <div class="hide w-richtext">)
-        const textElement = post.querySelector('.hide.w-richtext');
-        // Check if the textElement is not null before accessing its text content
-        if (textElement) {
-            const text = textElement.textContent;
-            // Calculate reading time
-            const readingTime = calculateReadingTime(text);
-            // Update the post with reading time (assuming you have a div with class 'read_time-wrapper')
-            const timeDisplay = post.querySelector('.read_time-wrapper p');
-            timeDisplay.textContent = readingTime;
-        }
+        const text = post.querySelector('.w-richtext').textContent;
+
+        const readingTime = calculateReadingTime(text);
+
+        const timeDisplay = post.querySelector('.reading-time');
+        timeDisplay.textContent = readingTime;
     });
 }
-    // Define the function to process card tags
+
+// Define the function to process card tags
 function processCardTags() {
     var cardTagsList = document.querySelectorAll('.card__tags');
     cardTagsList.forEach(function (cardTags) {
@@ -41,6 +37,7 @@ function processCardTags() {
         }
     });
 }
+
 // Function to check if a tag is already present in the container
 function isTagAlreadyPresent(container, tag) {
     var existingTags = container.querySelectorAll('.card__tag');
@@ -51,12 +48,11 @@ function isTagAlreadyPresent(container, tag) {
     }
     return false;
 }
+
 document.addEventListener('DOMContentLoaded', function () {
-    // Call the function on page load
     processCardTags();
-		updateReadingTimes();
+	updateReadingTimes();
     console.log("function called");
-    // Attach click event listener to the 'load-more' anchor tag
     var loadMoreButton = document.getElementById('load-more');
     if (loadMoreButton) {
         loadMoreButton.addEventListener('click', function () {
