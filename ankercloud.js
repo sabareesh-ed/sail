@@ -14,20 +14,16 @@ function updateReadingTimes() {
         console.log(`Processing Post ${index + 1}`);
 
         const text = post.querySelector('.w-richtext').textContent;
-
         const readingTime = calculateReadingTime(text);
-
         const timeDisplay = post.querySelector('.reading-time');
 
         if (timeDisplay) {
             timeDisplay.textContent = readingTime;
         } else {
-            timeDisplay.textContent = "1 min read";
+            console.log("timeDisplay not found")
         }
     });
 }
-
-// Assuming calculateReadingTime is defined elsewhere
 
 
 // Define the function to process card tags
