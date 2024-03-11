@@ -8,7 +8,6 @@
 
 function updateReadingTimes() {
     const blogPosts = document.querySelectorAll('.timer');
-    console.log("updateReadingTimes: Blog Posts Found", blogPosts.length);
 
     blogPosts.forEach((post, index) => {
         const text = post.querySelector('.w-richtext').textContent;
