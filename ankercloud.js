@@ -7,19 +7,28 @@
 }
 
 function updateReadingTimes() {
+    // Select all blog posts with class '.timer'
     const blogPosts = document.querySelectorAll('.timer');
+    console.log("updateReadingTimes: Blog Posts Found", blogPosts.length);
 
-    console.log("updateReadingTimes")
+    // Iterate over each post
+    blogPosts.forEach((post, index) => {
+        console.log(`Processing Post ${index + 1}`);
 
-
-    blogPosts.forEach(post => {
-        console.log("post",post)
+        // Select the text content of the post
         const text = post.querySelector('.w-richtext').textContent;
+        console.log(`Post ${index + 1} Text: `, text);
 
+        // Calculate the reading time based on the text
         const readingTime = calculateReadingTime(text);
+        console.log(`Post ${index + 1} Reading Time: `, readingTime);
 
+        // Find the element where the reading time should be displayed
         const timeDisplay = post.querySelector('.reading-time');
+
+        // Update the text content of the display element with the calculated reading time
         timeDisplay.textContent = readingTime;
+        console.log(`Post ${index + 1} Updated With Reading Time: `, readingTime);
     });
 }
 
