@@ -11,8 +11,6 @@ function updateReadingTimes() {
     console.log("updateReadingTimes: Blog Posts Found", blogPosts.length);
 
     blogPosts.forEach((post, index) => {
-        console.log(`Processing Post ${index + 1}`);
-
         const text = post.querySelector('.w-richtext').textContent;
         const readingTime = calculateReadingTime(text);
         const timeDisplay = post.querySelector('.reading-time');
