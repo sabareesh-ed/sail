@@ -1,11 +1,9 @@
 import PhotoSwipeLightbox from "https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js";
 import PhotoSwipe from "https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.esm.min.js";
 $(document).ready(function () {
-  console.log("ready!");
 
   const galleryElements = $("#gallery--1 a");
 
-  console.log(galleryElements);
   const dataSource = Array.from(galleryElements).map((element) => {
     var img = element.querySelector(".placeholder-img");
     return {
