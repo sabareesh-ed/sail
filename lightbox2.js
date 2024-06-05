@@ -83,27 +83,27 @@ $(document).ready(function () {
   };
 
   // initializing PhotoSwipe core adds it to DOM
-  $("#omr-menu").on("click", function (e) {
+  $("#open-omr-menu").on("click", function (e) {
     openPhotoSwipe(e, dataSourceOmrMenu); //Open OMR Menu
   });
   // initializing PhotoSwipe core adds it to DOM
-  $("#omr-specials").on("click", function (e) {
+  $("#open-omr-specials").on("click", function (e) {
     openPhotoSwipe(e, dataSourceOmrSpecials); // Open OMR Specials Menu
   });
   // initializing PhotoSwipe core adds it to DOM
-  $("#rjr-menu").on("click", function (e) {
+  $("#open-rjr-menu").on("click", function (e) {
     openPhotoSwipe(e, dataSourceRjrMenu); // Open RJR Menu
   });
   // initializing PhotoSwipe core adds it to DOM
-  $("#rjr-specials").on("click", function (e) {
+  $("#open-rjr-specials").on("click", function (e) {
     openPhotoSwipe(e, dataSourceRjrSpecials); // Open RJR Specials
   });
   // initializing PhotoSwipe core adds it to DOM
-  $("#hennur-menu").on("click", function (e) {
+  $("#open-hennur-menu").on("click", function (e) {
     openPhotoSwipe(e, dataSourceHennurMenu); // Open Hennur Menu
   });
   // initializing PhotoSwipe core adds it to DOM
-  $("#hennur-specials").on("click", function (e) {
+  $("#open-hennur-specials").on("click", function (e) {
     openPhotoSwipe(e, dataSourceHennurSpecials); // Open Hennur Specials
   });
 });
