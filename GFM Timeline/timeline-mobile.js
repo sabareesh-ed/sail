@@ -25,7 +25,7 @@ function createMobileTimeline(
       start: "top bottom",
       end: "bottom center",
       scrub: true,
-      markers: true,
+    //   markers: true,
       onEnter: () => {
         if (serial === 1) {
           gsap.set(timelineImgWrapper, { "--mask-size": maskEnd });

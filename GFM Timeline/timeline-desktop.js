@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           end: "bottom center",
           toggleActions: "play none none reverse",
           scrub: true,
-          markers: true,
+        //   markers: true,
           onEnter: () => {
             gsap.fromTo(
               timelineImgWrapper,
