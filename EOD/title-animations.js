@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: trigger,
-          start: "top top+=60%",
+          start: "top bottom-=10%",
           once: true,
         },
       });
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           stagger: 0.05,
           scrollTrigger: {
             trigger: element,
-            start: "top center",
+            start: "top bottom-=10%",
             once: true, // Ensures the animation only plays once per element
           },
         });
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: trigger,
-          start: "top bottom-=20%",
+          start: "top bottom-=10%",
           once: true,
         },
       });
