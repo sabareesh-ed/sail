@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const companyName = document.getElementById('companyName').value;
         
         if (!companyName.trim()) {
-            alert('Please type a company name.');
+            alert('Please type a company name.'); 
             return;
         }
 
