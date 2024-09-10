@@ -316,7 +316,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener for the start button
     document.getElementById('startButton').addEventListener('click', function() {
         const companyName = document.getElementById('companyName').value;
-        console.log("companyName", companyName)
+        
+        if (!companyName.trim()) {
+            alert('Please type a company name.');
+            return;
+        }
+
+        console.log("companyName", companyName);
         localStorage.setItem('welcome', JSON.stringify(companyName));
         
         allSections.forEach(section => {
